@@ -9,7 +9,24 @@ function App() {
 
     const [myList, setMyList] = useState([]);
 
-    
+    // create
+    const addToDB = () => {
+        axios.post('http://localhost:3001/create', {
+            name: name,
+            sets: sets
+        }).then(() => {
+            console.log("success");
+        });
+    };
+
+    // read
+    const getList = () => {
+        axios.get('http://localhost:3001/read').then((res) => {
+            setMyList(res.data);
+        });
+    }
+
+    // need to make one for update and delete
 
     return (
         <div className="App">
