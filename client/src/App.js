@@ -40,7 +40,7 @@ function App() {
                 <button onClick={()=> {console.log(name); console.log(sets); addToDB()}}>submit</button>
 
                 <br></br>
-                <button onClick={()=> {getList()}}>submit</button>
+                <button onClick={()=> {getList()}}>show list</button>
 
                 <br></br>
                 {myList.map(x => {
