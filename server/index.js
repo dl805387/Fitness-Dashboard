@@ -6,6 +6,9 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
+// to use nodemon, type this in terminal: nodemon index.js
+// when you save, nodemon will restart the server
+
 // database will only work if the server for this is running
 // lets do a test
 // it seems as if when you go to local host 3001 on browser, the database is connected
@@ -138,5 +141,5 @@ app.get('/read', (req, res) => {
 // so on here, maybe do app.get('/name) that does another query
 
 app.listen(3001, () => {
-    console.log("testing");
+    console.log("starting");
 });
