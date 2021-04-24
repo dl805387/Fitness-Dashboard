@@ -64,6 +64,16 @@ function App() {
         });
     };
 
+    const updateExercise = () => {
+        axios.put('http://localhost:3001/update', {
+            name: exerciseName,
+            sets: sets,
+            reps: reps
+        }).then(() => {
+            console.log("success");
+        });
+    };
+
     return (
         <div className="App">
             <div className="form">
@@ -91,6 +101,9 @@ function App() {
 
                 <br></br>
                 <button onClick={()=> {deleteExercise(exerciseName)}}>delete!</button>
+
+                <br></br>
+                <button onClick={()=> {updateExercise()}}>update!</button>
 
             </div>
         </div>

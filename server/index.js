@@ -50,7 +50,7 @@ app.post('/exercise', (req, res) => {
     const routine_id = req.body.routine_id;
     const name = req.body.name;
     const sets = req.body.sets;
-    const reps = req.body.sets;
+    const reps = req.body.reps;
 
     db.query('INSERT INTO exercises (routine_id, name, sets, reps) VALUES (?,?,?,?)', [routine_id, name, sets, reps], (err, result)=> {
         if (err) {
@@ -63,6 +63,7 @@ app.post('/exercise', (req, res) => {
 
 // deletes exercise based on exercise name
 // we would want to update this based on exercise id in the future
+// find a way to delete all the exercises associated with the routine
 app.delete('/delete/:exerciseName', (req, res) => {
     const name = req.params.exerciseName;
 
@@ -74,6 +75,27 @@ app.delete('/delete/:exerciseName', (req, res) => {
         }
     })
 });
+
+// updates exercise by changing the sets and reps
+// this finds the exercise by name
+// change to exercise id later
+app.put('/update', (req, res) => {
+    const name = req.body.name;
+    const sets = req.body.sets;
+    const reps = req.body.sets;
+
+    db.query('UPDATE exercises SET sets = ?, reps = ? WHERE name = ?', [sets, reps, name], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("Values Inserted");
+        }
+    })
+});
+
+// we need a delete for routine
+// need update for exercise (sets, reps) but not update for routine
+
 
 // app.post('/create', (req, res) => {
 //     const name = req.body.name;
