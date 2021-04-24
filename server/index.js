@@ -85,7 +85,7 @@ app.delete('/delete/:exerciseName', (req, res) => {
 app.put('/update', (req, res) => {
     const name = req.body.name;
     const sets = req.body.sets;
-    const reps = req.body.sets;
+    const reps = req.body.reps;
 
     db.query('UPDATE exercises SET sets = ?, reps = ? WHERE name = ?', [sets, reps, name], (err, result)=> {
         if (err) {
