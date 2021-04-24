@@ -45,6 +45,22 @@ app.post('/routine', (req, res) => {
     })
 });
 
+// add exercise to db
+app.post('/exercise', (req, res) => {
+    const routine_id = req.body.routine_id;
+    const name = req.body.name;
+    const sets = req.body.sets;
+    const reps = req.body.sets;
+
+    db.query('INSERT INTO exercises (routine_id, name, sets, reps) VALUES (?,?,?,?)', [routine_id, name, sets, reps], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("Values Inserted");
+        }
+    })
+});
+
 // app.post('/create', (req, res) => {
 //     const name = req.body.name;
 //     const sets = req.body.sets;

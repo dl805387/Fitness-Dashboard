@@ -8,6 +8,10 @@ function App() {
 
     const [myList, setMyList] = useState([]);
 
+    const [exerciseName, setExerciseName] = useState("");
+    const [sets, setSets] = useState(0);
+    const [reps, setReps] = useState(0);
+
     // create
     const addToDB = () => {
         axios.post('http://localhost:3001/create', {
@@ -37,6 +41,19 @@ function App() {
         });
     };
 
+    // add exercise
+    // make sure to update this with user id
+    const addExercise = () => {
+        axios.post('http://localhost:3001/exercise', {
+            routine_id: 1,
+            name: exerciseName,
+            sets: sets,
+            reps: reps
+        }).then(() => {
+            console.log("success");
+        });
+    };
+
     // need to make one for update and delete
 
     return (
@@ -57,6 +74,12 @@ function App() {
                 <br></br>
 
                 <button onClick={()=> {addRoutine()}}>click to add routine!</button>
+
+                <br></br>
+                <input type="text" onChange={(e) => {setExerciseName(e.target.value)}}></input>
+                <input type="number" onChange={(e) => {setSets(e.target.value)}}></input>
+                <input type="number" onChange={(e) => {setReps(e.target.value)}}></input>
+                <button onClick={()=> {addExercise()}}>click to add exercise!</button>
 
             </div>
         </div>
