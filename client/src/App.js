@@ -56,6 +56,14 @@ function App() {
 
     // need to make one for update and delete
 
+    // deletes exercise
+    // this works but need to make this based on id instead of name if possible
+    const deleteExercise = (exerciseName) => {
+        axios.delete('http://localhost:3001/delete/' + exerciseName).then(() => {
+            console.log("success");
+        });
+    };
+
     return (
         <div className="App">
             <div className="form">
@@ -80,6 +88,9 @@ function App() {
                 <input type="number" onChange={(e) => {setSets(e.target.value)}}></input>
                 <input type="number" onChange={(e) => {setReps(e.target.value)}}></input>
                 <button onClick={()=> {addExercise()}}>click to add exercise!</button>
+
+                <br></br>
+                <button onClick={()=> {deleteExercise(exerciseName)}}>delete!</button>
 
             </div>
         </div>

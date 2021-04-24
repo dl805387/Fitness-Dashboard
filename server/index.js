@@ -61,6 +61,20 @@ app.post('/exercise', (req, res) => {
     })
 });
 
+// deletes exercise based on exercise name
+// we would want to update this based on exercise id in the future
+app.delete('/delete/:exerciseName', (req, res) => {
+    const name = req.params.exerciseName;
+
+    db.query('DELETE FROM exercises WHERE name = ?', [name], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("Values Inserted");
+        }
+    })
+});
+
 // app.post('/create', (req, res) => {
 //     const name = req.body.name;
 //     const sets = req.body.sets;
