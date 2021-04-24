@@ -11,6 +11,8 @@ function Test(props) {
     const [sets, setSets] = useState(0);
     const [reps, setReps] = useState(0);
 
+    // might be able to use username to find id since username is unique
+
     // create
     const addToDB = () => {
         axios.post('http://localhost:3001/create', {
@@ -103,6 +105,9 @@ function Test(props) {
 
                 <br></br>
                 <button onClick={()=> {updateExercise()}}>update!</button>
+
+                <br></br>
+                <button onClick={()=> {props.handleLogout()}}>Logout</button>
 
             </div>
         </div>
