@@ -7,19 +7,23 @@ app.use(cors());
 app.use(express.json());
 
 // database will only work if the server for this is running
+// lets do a test
+// it seems as if when you go to local host 3001 on browser, the database is connected
+// if you dont go to localhost 3001, it dont
+// just doing node index.js isnt enough
+// next time try to see if database is working if you dont open 3001 in browser
 
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
     password: 'w',
-    database: 'exercises'
+    database: 'fitnessDB'
 });
 
 app.post('/create', (req, res) => {
     const name = req.body.name;
-    const sets = req.body.sets;
 
-    db.query('INSERT INTO exercises (name, sets) VALUES (?,?)', [name, sets], (err, result)=> {
+    db.query('INSERT INTO users (name) VALUES (?)', [name], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
@@ -27,6 +31,32 @@ app.post('/create', (req, res) => {
         }
     })
 });
+
+// adding routine to db
+app.post('/routine', (req, res) => {
+    const user_id = req.body.user_id;
+
+    db.query('INSERT INTO routines (user_id) VALUES (?)', [user_id], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("Values Inserted");
+        }
+    })
+});
+
+// app.post('/create', (req, res) => {
+//     const name = req.body.name;
+//     const sets = req.body.sets;
+
+//     db.query('INSERT INTO exercises (name, sets) VALUES (?,?)', [name, sets], (err, result)=> {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             res.send("Values Inserted");
+//         }
+//     })
+// });
 
 // I believe we are inserting things into the database by using req
 // The req.body determines what we insert into db
@@ -43,7 +73,7 @@ app.post('/create', (req, res) => {
 // this may not work, not sure
 
 app.get('/read', (req, res) => {
-    db.query("SELECT * FROM exercises", (err, result) => {
+    db.query("SELECT * FROM users", (err, result) => {
         if (err) {
             console.log(err);
         } else {

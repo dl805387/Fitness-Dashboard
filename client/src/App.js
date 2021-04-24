@@ -5,15 +5,13 @@ const axios = require('axios').default;
 function App() {
 
     const [name, setName] = useState("");
-    const [sets, setSets] = useState(0);
 
     const [myList, setMyList] = useState([]);
 
     // create
     const addToDB = () => {
         axios.post('http://localhost:3001/create', {
-            name: name,
-            sets: sets
+            name: name
         }).then(() => {
             console.log("success");
         });
@@ -26,6 +24,19 @@ function App() {
         });
     }
 
+    // add routine
+    // you need user id
+    // this is just adding a routine with user id 1; this works
+    // but you need to modify this by getting the user id
+    // maybe find a way to put password into database and find id based on password
+    const addRoutine = () => {
+        axios.post('http://localhost:3001/routine', {
+            user_id: 1
+        }).then(() => {
+            console.log("success");
+        });
+    };
+
     // need to make one for update and delete
 
     return (
@@ -34,10 +45,7 @@ function App() {
                 <label>name</label>
                 <input type="text" onChange={(e) => {setName(e.target.value)}}></input>
 
-                <label>sets</label>
-                <input type="number" onChange={(e) => {setSets(e.target.value)}}></input>
-
-                <button onClick={()=> {console.log(name); console.log(sets); addToDB()}}>submit</button>
+                <button onClick={()=> {console.log(name); addToDB()}}>submit</button>
 
                 <br></br>
                 <button onClick={()=> {getList()}}>show list</button>
@@ -46,6 +54,10 @@ function App() {
                 {myList.map(x => {
                     return <p key={x.id}>{x.name}</p>
                 })}
+                <br></br>
+
+                <button onClick={()=> {addRoutine()}}>click to add routine!</button>
+
             </div>
         </div>
     ); 
