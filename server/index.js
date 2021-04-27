@@ -180,7 +180,17 @@ app.post('/getID', (req, res) => {
     });
 });
 
+app.post('/getWorkout', (req, res) => {
+    const user_id = req.body.user_id;
 
+    db.query("SELECT * FROM workouts WHERE user_id = ?", [user_id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
 
 
 app.listen(3001, () => {
