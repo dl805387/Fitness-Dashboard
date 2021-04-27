@@ -14,6 +14,8 @@ function App() {
     const [passwordError, setPasswordError] = useState("");
     const [hasAccount, setHasAccount] = useState(false);
 
+    const [user_id, setUser_id] = useState(0);
+
     const clearInputs = () => {
         setEmail("");
         setPassword("");
@@ -42,8 +44,13 @@ function App() {
                         break;
                 }
             });
-        //console.log(email + " has logged in");
-        // need to retrieve user id
+        
+        // when user sign in, this will get the user_id 
+        axios.post('http://localhost:3001/getID', {
+            username: email
+        }).then((res) => {
+            setUser_id(res.data[0].user_id);
+        });
     }
 
     const handleSignup = () => {
@@ -86,19 +93,9 @@ function App() {
         });
     } 
 
-    // const addUser = () => {
-    //     axios.post('http://localhost:3001/addUser', {
-    //         name: name
-    //     }).then(() => {
-    //         console.log("success");
-    //     });
-    // };
-
     useEffect(() => {
         authListener();
     }, []);
-
-
 
     return (
         <div className="App">
@@ -120,6 +117,8 @@ function App() {
                 clearInputs={clearInputs}
                 />
             )}
+
+            {user_id}
         </div>
     ); 
 }

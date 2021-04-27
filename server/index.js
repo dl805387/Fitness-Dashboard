@@ -161,9 +161,23 @@ app.post('/addUser', (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            res.send("User Added");
+            res.send(result);
         }
     })
+});
+
+// gets the userid based on username
+// this works!
+app.post('/getID', (req, res) => {
+    const username = req.body.username;
+
+    db.query("SELECT user_id FROM users WHERE username = ?", [username], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
 });
 
 
