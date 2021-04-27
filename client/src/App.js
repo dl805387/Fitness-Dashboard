@@ -42,6 +42,8 @@ function App() {
                         break;
                 }
             });
+        //console.log(email + " has logged in");
+        // need to retrieve user id
     }
 
     const handleSignup = () => {
@@ -60,6 +62,13 @@ function App() {
                         break;
                 }
             });
+
+        // when user sign up, this adds the username to db
+        axios.post('http://localhost:3001/addUser', {
+            username: email
+        }).then(() => {
+            console.log("success");
+        });
     }
 
     const handleLogout = () => {
@@ -76,6 +85,14 @@ function App() {
             }
         });
     } 
+
+    // const addUser = () => {
+    //     axios.post('http://localhost:3001/addUser', {
+    //         name: name
+    //     }).then(() => {
+    //         console.log("success");
+    //     });
+    // };
 
     useEffect(() => {
         authListener();

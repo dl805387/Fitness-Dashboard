@@ -9,12 +9,11 @@ app.use(express.json());
 // to use nodemon, type this in terminal: nodemon index.js
 // when you save, nodemon will restart the server
 
-// database will only work if the server for this is running
-// lets do a test
-// it seems as if when you go to local host 3001 on browser, the database is connected
-// if you dont go to localhost 3001, it dont
-// just doing node index.js isnt enough
-// next time try to see if database is working if you dont open 3001 in browser
+// need to start mysql server first
+// mysql.server start
+// maybe find a way to add this to script in package.json
+
+
 
 const db = mysql.createConnection({
     user: 'root',
@@ -22,6 +21,8 @@ const db = mysql.createConnection({
     password: 'w',
     database: 'fitnessDB'
 });
+
+//
 
 app.post('/create', (req, res) => {
     const name = req.body.name;
@@ -140,6 +141,32 @@ app.get('/read', (req, res) => {
 // On the front end, you could prolly do axios get a different route
 // so on here, maybe do app.get('/name) that does another query
 
+
+// code above is for testing
+
+// this is the real stuff
+// SELECT user_id FROM fitnessDB.users WHERE name = 'danny';
+// this is for read when trying to get user id
+// we get id by saying where username = email
+
+
+
+// this adds the user to the database with username
+// user_id is generated automatically
+// this code is good. dont need to change unless you want to add more column to user table
+app.post('/addUser', (req, res) => {
+    const username = req.body.username;
+
+    db.query('INSERT INTO users (username) VALUES (?)', [username], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("User Added");
+        }
+    })
+});
+
+
 app.listen(3001, () => {
-    console.log("starting");
+    console.log("listening on localhost:3001");
 });
