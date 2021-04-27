@@ -13,7 +13,7 @@ app.use(express.json());
 // mysql.server start
 // maybe find a way to add this to script in package.json
 
-
+// update comments when done
 
 const db = mysql.createConnection({
     user: 'root',
@@ -179,6 +179,8 @@ app.post('/getID', (req, res) => {
         }
     });
 });
+
+
 
 
 app.listen(3001, () => {

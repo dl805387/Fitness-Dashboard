@@ -1,11 +1,13 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import Test from './components/Test';
 import fire from './fire';
 import Login from './components/Login'
+import Dashboard from './components/Dashboard';
 const axios = require('axios').default;
 
 function App() {
+
+    // remember to remove all console logs before you submit
 
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
@@ -14,7 +16,9 @@ function App() {
     const [passwordError, setPasswordError] = useState("");
     const [hasAccount, setHasAccount] = useState(false);
 
+    // These states below are used for dashboard to get user id
     const [user_id, setUser_id] = useState(0);
+    const [username, setUsername] = useState("");
 
     const clearInputs = () => {
         setEmail("");
@@ -25,7 +29,6 @@ function App() {
         setEmailError("");
         setPasswordError("");
     }
-
 
     const handleLogin = () => {
         clearErrors();
@@ -45,12 +48,7 @@ function App() {
                 }
             });
         
-        // when user sign in, this will get the user_id 
-        axios.post('http://localhost:3001/getID', {
-            username: email
-        }).then((res) => {
-            setUser_id(res.data[0].user_id);
-        });
+        setUsername(email);
     }
 
     const handleSignup = () => {
@@ -76,6 +74,8 @@ function App() {
         }).then(() => {
             console.log("success");
         });
+
+        setUsername(email);
     }
 
     const handleLogout = () => {
@@ -100,25 +100,29 @@ function App() {
     return (
         <div className="App">
             {user ? (
-                <Test handleLogout={handleLogout} />
+                <Dashboard 
+                    handleLogout = {handleLogout} 
+                    user_id = {user_id} 
+                    setUser_id = {setUser_id}
+                    username = {username} 
+                    setUsername = {setUsername} 
+                />
             ) : (
                 <Login 
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                handleLogin={handleLogin}
-                handleSignup={handleSignup}
-                hasAccount={hasAccount}
-                setHasAccount={setHasAccount}
-                emailError={emailError}
-                passwordError={passwordError}
-                clearErrors={clearErrors}
-                clearInputs={clearInputs}
+                    email = {email}
+                    setEmail = {setEmail}
+                    password = {password}
+                    setPassword = {setPassword}
+                    handleLogin = {handleLogin}
+                    handleSignup = {handleSignup}
+                    hasAccount = {hasAccount}
+                    setHasAccount = {setHasAccount}
+                    emailError = {emailError}
+                    passwordError = {passwordError}
+                    clearErrors = {clearErrors}
+                    clearInputs = {clearInputs}
                 />
             )}
-
-            {user_id}
         </div>
     ); 
 }
