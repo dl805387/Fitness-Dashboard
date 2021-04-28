@@ -32,10 +32,12 @@ function App() {
 
     const handleLogin = () => {
         clearErrors();
+        let isError = false;
         fire
             .auth()
             .signInWithEmailAndPassword(email, password)
             .catch(err => {
+                isError = true;
                 switch (err.code) {
                     case "auth/invalid-email":
                     case "auth/user-disabled":
@@ -46,18 +48,22 @@ function App() {
                         setPasswordError(err.message);
                         break;
                 }
+            }).then(() => {
+                //Only set username to email if there are no errors with firebase.
+                if (!isError) {
+                    setUsername(email);
+                }
             });
-        
-        setUsername(email);
     }
 
     const handleSignup = () => {
         clearErrors();
+        let isError = false;
         fire
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .catch(err => {
-                console.log("error");
+                isError = true;
                 switch (err.code) {
                     case "auth/email-already-in-use":
                     case "auth/invalid-email":
@@ -67,16 +73,19 @@ function App() {
                         setPasswordError(err.message);
                         break;
                 }
+            }).then(() => {
+                //Only add new user to database if there are no errors with firebase.
+                if (!isError) {
+                    // When user successfully sign up, they will be added to database
+                    axios.post('http://localhost:3001/addUser', {
+                        username: email
+                    }).then(() => {
+                        console.log("success");
+                    });
+
+                    setUsername(email);
+                } 
             });
-
-        // when user sign up, this adds the username to db
-        axios.post('http://localhost:3001/addUser', {
-            username: email
-        }).then(() => {
-            console.log("success");
-        });
-
-        setUsername(email);
     }
 
     const handleLogout = () => {
