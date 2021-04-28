@@ -16,10 +16,6 @@ function App() {
     const [passwordError, setPasswordError] = useState("");
     const [hasAccount, setHasAccount] = useState(false);
 
-    // These states below are used for dashboard to get user id
-    const [user_id, setUser_id] = useState(0);
-    const [username, setUsername] = useState("");
-
     const clearInputs = () => {
         setEmail("");
         setPassword("");
@@ -47,11 +43,6 @@ function App() {
                     case "auth/wrong-password":
                         setPasswordError(err.message);
                         break;
-                }
-            }).then(() => {
-                //Only set username to email if there are no errors with firebase.
-                if (!isError) {
-                    setUsername(email);
                 }
             });
     }
@@ -82,8 +73,6 @@ function App() {
                     }).then(() => {
                         console.log("success");
                     });
-
-                    setUsername(email);
                 } 
             });
     }
@@ -112,10 +101,7 @@ function App() {
             {user ? (
                 <Dashboard 
                     handleLogout = {handleLogout} 
-                    user_id = {user_id} 
-                    setUser_id = {setUser_id}
-                    username = {username} 
-                    setUsername = {setUsername} 
+                    user = {user}
                 />
             ) : (
                 <Login 

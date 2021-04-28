@@ -17,9 +17,16 @@ function Panel(props) {
     }, []);
 
     return (
-        <div className="App">
-            {/* A JSX comment */}
-            {console.log(workouts)}
+        <div className="scroll">
+            <div>Workout Routines</div>
+            {workouts.map(x => {
+                return <div key = {x.workout_id}>{x.name}</div>
+            })}
+
+            <div className="addWorkout">
+                <div>Add Workout</div>
+                <button>Plus</button>
+            </div>
         </div>
     );
 }
