@@ -19,7 +19,7 @@ function Panel(props) {
     return (
         <div className="App">
             {/* A JSX comment */}
-            <p> {console.log(workouts)} </p>
+            {console.log(workouts)}
         </div>
     );
 }

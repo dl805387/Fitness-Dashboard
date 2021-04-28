@@ -57,6 +57,7 @@ function App() {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .catch(err => {
+                console.log("error");
                 switch (err.code) {
                     case "auth/email-already-in-use":
                     case "auth/invalid-email":

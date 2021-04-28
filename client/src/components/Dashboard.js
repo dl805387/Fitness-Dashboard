@@ -25,7 +25,7 @@ function Dashboard(props) {
         <div className="App">
             <button onClick={()=> {handleLogout(); setUsername(""); setUser_id(0)}}>Logout</button>
             <p> {username} </p>
-            <Panel user_id = {user_id} />
+            {user_id !== 0 && (<Panel user_id = {user_id} />)}
         </div>
     );
 }
