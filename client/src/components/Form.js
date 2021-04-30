@@ -32,13 +32,12 @@ function Form(props) {
             
             <p> {"this is popup with id " + userID} </p>
 
+            <input value={name} onChange={e => {setName(e.target.value)}}></input>
+
             <div className="labelPlusBtn">
-                <input value={name} onChange={e => {setName(e.target.value)}}></input>
-                <label>Log Workout</label>
+                <label>Create Workout Routine</label>
                 <button onClick={e => {e.preventDefault(); addRoutine(); setFormPopup(false); }}>Plus</button>
             </div>
-
-
 
             <button onClick={e => {e.preventDefault(); setFormPopup(false); }}>Cancel</button>
             

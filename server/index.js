@@ -208,6 +208,34 @@ app.post('/addRoutine', (req, res) => {
     })
 });
 
+// add workout to db
+app.post('/addWorkout', (req, res) => {
+    const routineID = req.body.routineID;
+    const description = req.body.description;
+    const date = req.body.date;
+
+    db.query('INSERT INTO workouts (routineID, description, date) VALUES (?,?,?)', [routineID, description, date], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+// get workouts based on id
+app.post('/getWorkouts', (req, res) => {
+    const routineID = req.body.routineID;
+
+    db.query("SELECT * FROM workouts WHERE routineID = ?", [routineID], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 
 app.listen(3001, () => {
     console.log("listening on localhost:3001");
