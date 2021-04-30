@@ -13,6 +13,8 @@ function Routine(props) {
     const [date, setDate] = useState("");
     const [workouts, setWorkouts] = useState([]);
 
+    const [workoutList, setWorkoutList] = useState([]);
+
     const addWorkout = () => {
         axios.post('http://localhost:3001/addWorkout', {
             routineID: routineID,

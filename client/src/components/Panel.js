@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Form from './Form';
 import Routine from './Routine';
 const axios = require('axios').default;
 
@@ -8,11 +7,31 @@ function Panel(props) {
     const {userID} = props;
 
     const [routines, setRoutines] = useState([]);
-    const [formPopup, setFormPopup] = useState(false);
     const [routinePopup, setRoutinePopup] = useState(false);
     const [routineID, setRoutineID] = useState(0);
 
+    // This is used to add workout routine to the panel when a routine is added to database
+    const [routineList, setRoutineList] = useState([]);
 
+    const [name, setName] = useState("");
+
+
+    // add routine to database and set the routineID
+    const addRoutine = () => {
+        axios.post('http://localhost:3001/addRoutine', {
+            userID: userID,
+            name: name
+        }).then((res) => {
+            console.log("success");
+            // WHen a workout routine is added, it also gets added to the screen
+            setRoutineList(routineList.concat(  
+                <div key = {routineList.length} 
+                onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
+                >{name}</div>
+            ));
+            setName("");
+        });
+    }
 
     useEffect(() => {
         // get workouts from databse that has the same userID
@@ -23,6 +42,10 @@ function Panel(props) {
         });
     }, []);
 
+    // to do
+    // cant submit empty input field
+
+
     return (
         <div>
             <div>Workout Routines</div>
@@ -32,14 +55,18 @@ function Panel(props) {
                 {routines.map(x => {
                     return <div key = {x.routineID} onClick={e => {e.preventDefault(); setRoutineID(x.routineID); setRoutinePopup(true); }}>{x.name}</div>
                 })}
+                {routineList}
             </div>
 
+
+            <input value={name} onChange={e => {setName(e.target.value)}} ></input>
             <div className="labelPlusBtn">
                 <label>Add Workout Routine</label>
-                <button onClick={e => {e.preventDefault(); setFormPopup(true); }}>Plus</button>
+                <button onClick={e => {e.preventDefault(); addRoutine(); }}>Plus</button>         
             </div>
 
-            {formPopup && <Form userID={userID} setFormPopup={setFormPopup} />}
+            
+
 
             {routinePopup && <Routine routineID={routineID} setRoutinePopup={setRoutinePopup} />}
         </div>
