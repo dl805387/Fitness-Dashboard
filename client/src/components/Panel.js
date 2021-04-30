@@ -13,6 +13,7 @@ function Panel(props) {
     const [routineID, setRoutineID] = useState(0);
 
 
+
     useEffect(() => {
         // get workouts from databse that has the same userID
         axios.post('http://localhost:3001/getRoutines', {
@@ -25,6 +26,7 @@ function Panel(props) {
     return (
         <div>
             <div>Workout Routines</div>
+
 
             <div className="scroll">
                 {routines.map(x => {

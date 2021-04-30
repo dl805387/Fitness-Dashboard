@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Workout from './Workout';
 const axios = require('axios').default;
 
 function Routine(props) {
@@ -58,13 +59,9 @@ function Routine(props) {
 
 
             <div className="scroll">
-                <div className="ext-box">
-                    <div className="int-box">
-                    {workouts.map(x=>{
-                        return <textarea key = {x.workoutID} defaultValue={x.description} ></textarea>
-                    })}
-                    </div>
-                </div>
+                {workouts.map(x=>{
+                    return <Workout workoutID={x.workoutID} description={x.description} date={x.date} routineID={routineID} key = {x.workoutID} />
+                })}             
             </div>
             
 

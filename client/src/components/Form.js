@@ -5,7 +5,7 @@ function Form(props) {
 
     const {
         userID,
-        setFormPopup
+        setFormPopup,
     } = props;
 
     const [name, setName] = useState("");
