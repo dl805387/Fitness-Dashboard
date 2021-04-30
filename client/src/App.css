@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .scroll {
@@ -12,6 +12,21 @@
     padding: 20px;
 }
 
-.addWorkout {
+.labelPlusBtn {
     display: flex;
+}
+
+.popup {   
+    z-index: 3;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+    text-align: center;
+
+    width: 50% !important;
+    background-color: rgb(187, 245, 148);
+    padding: 1%;
+    border-radius: 15px;
 }
