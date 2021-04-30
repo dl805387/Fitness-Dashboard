@@ -180,16 +180,32 @@ app.post('/getID', (req, res) => {
     });
 });
 
-app.post('/getWorkout', (req, res) => {
+//this works
+app.post('/getRoutines', (req, res) => {
     const user_id = req.body.user_id;
 
-    db.query("SELECT * FROM workouts WHERE user_id = ?", [user_id], (err, result) => {
+    db.query("SELECT * FROM routines WHERE user_id = ?", [user_id], (err, result) => {
         if (err) {
             console.log(err);
         } else {
             res.send(result);
         }
     });
+});
+
+// add workout to db
+// this works
+app.post('/addRoutine', (req, res) => {
+    const user_id = req.body.user_id;
+    const name = req.body.name;
+
+    db.query('INSERT INTO routines (user_id, name) VALUES (?, ?)', [user_id, name], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
 });
 
 

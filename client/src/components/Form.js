@@ -3,54 +3,44 @@ const axios = require('axios').default;
 
 function Form(props) {
 
-    const {user_id} = props;
+    const {
+        user_id,
+        setFormPopup
+    } = props;
 
-    const [text, setText] = useState({});
+    const [name, setName] = useState("");
 
-    const nani = (name, value) => {
-        //setText({first: "1"});
-        // let f = text;
-        // let obj = f;
-        // obj["second"] = "2";
-        // return obj;
-
-        let obj = {};
-        obj = {...text};
-        //obj = ...text;
-        obj[name] = value;
-        return obj;
+    const addRoutine = () => {
+        axios.post('http://localhost:3001/addRoutine', {
+            user_id: user_id,
+            name: name
+        }).then(() => {
+            console.log("success");
+        });
     }
 
     useEffect(() => {
-        //setText({first: "1"});
-        // let f = {};
-        // let obj = f;
-        // obj["second"] = "2";
-        // console.log(obj);
+        //
     }, []);
-   
 
-    const Input = () => {
-        return <input type="text" onChange={e => setText(nani(e.target.name, e.target.value))}></input>;
-    };
-    const [inputList, setInputList] = useState([]);
+    // to do
+    // when you add workout, it doesnt change in the panel
+   
 
     return (
         <div className="popup">
             
             <p> {"this is popup with id " + user_id} </p>
+
             <div className="labelPlusBtn">
-                <label>Add Exercise</label>
-                <button onClick={e => {e.preventDefault(); setInputList(inputList.concat(<Input key={inputList.length} name={inputList.length} />)); }}>Plus</button>
+                <input value={name} onChange={e => {setName(e.target.value)}}></input>
+                <label>Log Workout</label>
+                <button onClick={e => {e.preventDefault(); addRoutine(); setFormPopup(false); }}>Plus</button>
             </div>
 
-            {inputList}
-            <br>
-            </br>
-            <input type="text" name="first" onChange={e => setText(nani(e.target.name, e.target.value))}></input>
-            <input type="text" name="second" onChange={e => setText(nani(e.target.name, e.target.value))}></input>
-            <input type="text" name="pppp" onChange={e => setText({ [e.target.name]: e.target.value })}></input>
-            {console.log(text)}
+
+
+            <button onClick={e => {e.preventDefault(); setFormPopup(false); }}>Cancel</button>
             
         </div>
     );
