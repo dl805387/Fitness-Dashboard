@@ -23,9 +23,9 @@ function Panel(props) {
             name: name
         }).then((res) => {
             console.log("success");
-            // WHen a workout routine is added, it also gets added to the screen
+            // When a workout routine is added, it also gets added to the user interface
             setRoutineList(routineList.concat(  
-                <div key = {routineList.length} 
+                <div key = {res.data.insertId} 
                 onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
                 >{name}</div>
             ));
@@ -52,10 +52,10 @@ function Panel(props) {
 
 
             <div className="scroll">
+                {routineList}
                 {routines.map(x => {
                     return <div key = {x.routineID} onClick={e => {e.preventDefault(); setRoutineID(x.routineID); setRoutinePopup(true); }}>{x.name}</div>
                 })}
-                {routineList}
             </div>
 
 

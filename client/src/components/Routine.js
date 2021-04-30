@@ -20,8 +20,12 @@ function Routine(props) {
             routineID: routineID,
             description: description,
             date: date
-        }).then(() => {
+        }).then((res) => {
             console.log("success");
+            // When a workout is added, it also gets added to the user interface
+            setWorkoutList(workoutList.concat(  
+                <Workout workoutID={res.data.insertId} description={description} date={date} routineID={routineID} key = {res.data.insertId} />
+            ));
         });
     }
 
@@ -56,11 +60,11 @@ function Routine(props) {
 
             <button onClick={e => {e.preventDefault(); setRoutinePopup(false); }}>Cancel</button>
 
-            {console.log(workouts)}
 
 
 
             <div className="scroll">
+                {workoutList}
                 {workouts.map(x=>{
                     return <Workout workoutID={x.workoutID} description={x.description} date={x.date} routineID={routineID} key = {x.workoutID} />
                 })}             
