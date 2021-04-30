@@ -166,12 +166,12 @@ app.post('/addUser', (req, res) => {
     })
 });
 
-// gets the userid based on username
+// gets the userID based on username
 // this works!
 app.post('/getID', (req, res) => {
     const username = req.body.username;
 
-    db.query("SELECT user_id FROM users WHERE username = ?", [username], (err, result) => {
+    db.query("SELECT userID FROM users WHERE username = ?", [username], (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -182,9 +182,9 @@ app.post('/getID', (req, res) => {
 
 //this works
 app.post('/getRoutines', (req, res) => {
-    const user_id = req.body.user_id;
+    const userID = req.body.userID;
 
-    db.query("SELECT * FROM routines WHERE user_id = ?", [user_id], (err, result) => {
+    db.query("SELECT * FROM routines WHERE userID = ?", [userID], (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -196,10 +196,10 @@ app.post('/getRoutines', (req, res) => {
 // add workout to db
 // this works
 app.post('/addRoutine', (req, res) => {
-    const user_id = req.body.user_id;
+    const userID = req.body.userID;
     const name = req.body.name;
 
-    db.query('INSERT INTO routines (user_id, name) VALUES (?, ?)', [user_id, name], (err, result)=> {
+    db.query('INSERT INTO routines (userID, name) VALUES (?, ?)', [userID, name], (err, result)=> {
         if (err) {
             console.log(err);
         } else {

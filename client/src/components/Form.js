@@ -4,7 +4,7 @@ const axios = require('axios').default;
 function Form(props) {
 
     const {
-        user_id,
+        userID,
         setFormPopup
     } = props;
 
@@ -12,7 +12,7 @@ function Form(props) {
 
     const addRoutine = () => {
         axios.post('http://localhost:3001/addRoutine', {
-            user_id: user_id,
+            userID: userID,
             name: name
         }).then(() => {
             console.log("success");
@@ -30,7 +30,7 @@ function Form(props) {
     return (
         <div className="popup">
             
-            <p> {"this is popup with id " + user_id} </p>
+            <p> {"this is popup with id " + userID} </p>
 
             <div className="labelPlusBtn">
                 <input value={name} onChange={e => {setName(e.target.value)}}></input>

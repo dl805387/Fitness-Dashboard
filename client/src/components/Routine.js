@@ -4,7 +4,7 @@ const axios = require('axios').default;
 function Routine(props) {
 
     const {
-        routine_id,
+        routineID,
         setRoutinePopup,
     } = props;
 
@@ -12,7 +12,7 @@ function Routine(props) {
     return (
         <div className="popup">
             <div>
-                {routine_id}
+                {routineID}
             </div>
         </div>
     );
