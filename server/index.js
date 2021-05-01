@@ -184,7 +184,7 @@ app.post('/getID', (req, res) => {
 app.post('/getRoutines', (req, res) => {
     const userID = req.body.userID;
 
-    db.query("SELECT * FROM routines WHERE userID = ?", [userID], (err, result) => {
+    db.query("SELECT * FROM routines WHERE userID = ? ORDER BY routineID DESC", [userID], (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -227,7 +227,7 @@ app.post('/addWorkout', (req, res) => {
 app.post('/getWorkouts', (req, res) => {
     const routineID = req.body.routineID;
 
-    db.query("SELECT * FROM workouts WHERE routineID = ?", [routineID], (err, result) => {
+    db.query("SELECT * FROM workouts WHERE routineID = ? ORDER BY workoutID DESC", [routineID], (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -240,3 +240,7 @@ app.post('/getWorkouts', (req, res) => {
 app.listen(3001, () => {
     console.log("listening on localhost:3001");
 });
+
+
+// so far get routines is in reverse order
+// decide if you want it to be in reverse order
