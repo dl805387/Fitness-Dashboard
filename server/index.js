@@ -142,6 +142,13 @@ app.get('/read', (req, res) => {
 // so on here, maybe do app.get('/name) that does another query
 
 
+
+
+
+
+
+
+
 // code above is for testing
 
 // this is the real stuff
@@ -234,6 +241,21 @@ app.post('/getWorkouts', (req, res) => {
             res.send(result);
         }
     });
+});
+
+// updates workout
+app.put('/updateWorkout', (req, res) => {
+    const workoutID = req.body.workoutID;
+    const description = req.body.description;
+    const date = req.body.date;
+
+    db.query('UPDATE workouts SET description = ?, date = ? WHERE workoutID = ?', [description, date, workoutID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
 });
 
 
