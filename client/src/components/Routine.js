@@ -23,15 +23,24 @@ function Routine(props) {
         }).then((res) => {
             console.log("success");
             // When a workout is added, it also gets added to the user interface
-            setWorkoutList(workoutList.concat(  
-                <Workout workoutID={res.data.insertId} description={description} date={date} routineID={routineID} key = {res.data.insertId} />
-            ));
-        });
-    }
 
-    const clear = () => {
+            // setWorkoutList(workoutList.concat(  
+            //     <Workout workoutID={res.data.insertId} description={description} date={date} routineID={routineID} key = {res.data.insertId} />
+            // ));
+
+            // let arr = [].concat(  
+            //     <Workout workoutID={res.data.insertId} description={description} date={date} routineID={routineID} key = {res.data.insertId} />
+            // ).concat(  
+            //     workoutList
+            // );
+            setWorkoutList(
+                [].concat(  
+                    <Workout workoutID={res.data.insertId} description={description} date={date} routineID={routineID} key = {res.data.insertId} />
+                ).concat(workoutList)
+            );
+        });
+
         setDescription("");
-        setDate("");
     }
 
     useEffect(() => {
@@ -41,6 +50,13 @@ function Routine(props) {
         }).then((res) => {
             setWorkouts(res.data);
         });
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        setDate(today);
     }, []);
 
 
@@ -51,11 +67,11 @@ function Routine(props) {
             <p>{routineID}</p>
 
             <textarea value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
-            <input value={date} onChange={e => {setDate(e.target.value)}}></input>
+            <input defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
 
             <div className="labelPlusBtn">
                 <label>Log Workout</label>
-                <button onClick={e => {e.preventDefault(); addWorkout(); clear(); }}>Plus</button>
+                <button onClick={e => {e.preventDefault(); addWorkout(); }}>Plus</button>
             </div>
 
             <button onClick={e => {e.preventDefault(); setRoutinePopup(false); }}>Cancel</button>

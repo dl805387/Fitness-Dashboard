@@ -10,6 +10,10 @@ function Workout(props) {
         routineID
     } = props;
 
+    useEffect(() => {
+
+    }, []);
+
     return (
         <div>
             

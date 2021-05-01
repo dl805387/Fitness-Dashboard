@@ -24,11 +24,22 @@ function Panel(props) {
         }).then((res) => {
             console.log("success");
             // When a workout routine is added, it also gets added to the user interface
-            setRoutineList(routineList.concat(  
-                <div key = {res.data.insertId} 
-                onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
-                >{name}</div>
-            ));
+
+            // setRoutineList(routineList.concat(  
+            //     <div key = {res.data.insertId} 
+            //     onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
+            //     >{name}</div>
+            // ));
+
+            setRoutineList(
+                [].concat(
+                    <div key = {res.data.insertId} 
+                    onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
+                    >{name}</div>)
+                .concat(routineList)
+            );
+
+
             setName("");
         });
     }
