@@ -175,10 +175,10 @@ app.post('/addUser', (req, res) => {
 
 // gets the userID based on username
 // this works!
-app.post('/getID', (req, res) => {
+app.post('/getUserInfo', (req, res) => {
     const username = req.body.username;
 
-    db.query("SELECT userID FROM users WHERE username = ?", [username], (err, result) => {
+    db.query("SELECT * FROM users WHERE username = ?", [username], (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -261,9 +261,9 @@ app.put('/updateWorkout', (req, res) => {
 // updates weight training goal
 app.put('/updateWtGoal', (req, res) => {
     const userID = req.body.userID;
-    const wtText = req.body.wtText;
+    const wtGoal = req.body.wtGoal;
 
-    db.query('UPDATE users SET wtGoal = ? WHERE userID = ?', [wtText, userID], (err, result)=> {
+    db.query('UPDATE users SET wtGoal = ? WHERE userID = ?', [wtGoal, userID], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
@@ -275,9 +275,9 @@ app.put('/updateWtGoal', (req, res) => {
 // updates cardio goal
 app.put('/updatecardioGoal', (req, res) => {
     const userID = req.body.userID;
-    const cardioText = req.body.cardioText;
+    const cardioGoal = req.body.cardioGoal;
 
-    db.query('UPDATE users SET cardioGoal = ? WHERE userID = ?', [cardioText, userID], (err, result)=> {
+    db.query('UPDATE users SET cardioGoal = ? WHERE userID = ?', [cardioGoal, userID], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
@@ -289,9 +289,9 @@ app.put('/updatecardioGoal', (req, res) => {
 // updates calories goal
 app.put('/updateCalGoal', (req, res) => {
     const userID = req.body.userID;
-    const calText = req.body.calText;
+    const calGoal = req.body.calGoal;
 
-    db.query('UPDATE users SET calGoal = ? WHERE userID = ?', [calText, userID], (err, result)=> {
+    db.query('UPDATE users SET calGoal = ? WHERE userID = ?', [calGoal, userID], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
@@ -303,9 +303,9 @@ app.put('/updateCalGoal', (req, res) => {
 // updates protein goal
 app.put('/updateProteinGoal', (req, res) => {
     const userID = req.body.userID;
-    const proteinText = req.body.proteinText;
+    const proteinGoal = req.body.proteinGoal;
 
-    db.query('UPDATE users SET proteinGoal = ? WHERE userID = ?', [proteinText, userID], (err, result)=> {
+    db.query('UPDATE users SET proteinGoal = ? WHERE userID = ?', [proteinGoal, userID], (err, result)=> {
         if (err) {
             console.log(err);
         } else {

@@ -11,14 +11,22 @@ function Dashboard(props) {
     } = props;
 
     const [userID, setUserID] = useState(0);
+    const [wtGoal, setWtGoal] = useState("");
+    const [cardioGoal, setCardioGoal] = useState("");
+    const [calGoal, setCalGoal] = useState("");
+    const [proteinGoal, setProteinGoal] = useState("");
 
     useEffect(() => {
-        // when user sign in, this will get the userID
+        // when user sign in, this will get the userID and other data
         if (user !== "") {
-            axios.post('http://localhost:3001/getID', {
+            axios.post('http://localhost:3001/getUserInfo', {
                 username: user.email
             }).then((res) => {
                 setUserID(res.data[0].userID);
+                setWtGoal(res.data[0].wtGoal);
+                setCardioGoal(res.data[0].cardioGoal);
+                setCalGoal(res.data[0].calGoal);
+                setProteinGoal(res.data[0].proteinGoal);
             });
         }
     }, []);
@@ -30,7 +38,17 @@ function Dashboard(props) {
 
             <div className="horzDisplay">
                 {userID !== 0 && (<Panel userID = {userID} />)}
-                <Goals userID = {userID} />
+                <Goals 
+                    userID = {userID} 
+                    wtGoal = {wtGoal}
+                    setWtGoal = {setWtGoal}
+                    cardioGoal = {cardioGoal }
+                    setCardioGoal = {setCardioGoal}
+                    calGoal = {calGoal }
+                    setCalGoal = {setCalGoal}
+                    proteinGoal = {proteinGoal}
+                    setProteinGoal = {setProteinGoal}
+                />
             </div>
         </div>
     );
