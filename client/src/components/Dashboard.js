@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Panel from './Panel';
+import Goals from './Goals';
 const axios = require('axios').default;
 
 function Dashboard(props) {
@@ -23,10 +24,14 @@ function Dashboard(props) {
     }, []);
 
     return (
-        <div className="App">
+        <div>
             <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
-            <p> {user.email} </p>
-            {userID !== 0 && (<Panel userID = {userID} />)}
+            <p>Welcome, {user.email} </p>
+
+            <div className="horzDisplay">
+                {userID !== 0 && (<Panel userID = {userID} />)}
+                <Goals userID = {userID} />
+            </div>
         </div>
     );
 }

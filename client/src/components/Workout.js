@@ -38,6 +38,10 @@ function Workout(props) {
     // remove routineID if you dont need it
     // that also means you dont need to pass routineID in
 
+    // textarea need to change size if the text is long
+    // either that or add a scroll affect
+    // i think changes size is best
+
 
     useEffect(() => {
 

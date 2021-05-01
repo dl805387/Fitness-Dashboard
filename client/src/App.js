@@ -97,7 +97,7 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div>
             {user ? (
                 <Dashboard 
                     handleLogout = {handleLogout} 

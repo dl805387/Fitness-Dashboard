@@ -31,6 +31,12 @@
     border-radius: 15px;
 }
 
+.horzDisplay {
+    display: flex;
+}
+
+
+
 /* this is for vertically aligning divs
 div.ext-box { display: table; width:50%;}
 div.int-box { display: table-cell; vertical-align: middle; }

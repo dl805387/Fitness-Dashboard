@@ -258,6 +258,62 @@ app.put('/updateWorkout', (req, res) => {
     })
 });
 
+// updates weight training goal
+app.put('/updateWtGoal', (req, res) => {
+    const userID = req.body.userID;
+    const wtText = req.body.wtText;
+
+    db.query('UPDATE users SET wtGoal = ? WHERE userID = ?', [wtText, userID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+// updates cardio goal
+app.put('/updatecardioGoal', (req, res) => {
+    const userID = req.body.userID;
+    const cardioText = req.body.cardioText;
+
+    db.query('UPDATE users SET cardioGoal = ? WHERE userID = ?', [cardioText, userID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+// updates calories goal
+app.put('/updateCalGoal', (req, res) => {
+    const userID = req.body.userID;
+    const calText = req.body.calText;
+
+    db.query('UPDATE users SET calGoal = ? WHERE userID = ?', [calText, userID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+// updates protein goal
+app.put('/updateProteinGoal', (req, res) => {
+    const userID = req.body.userID;
+    const proteinText = req.body.proteinText;
+
+    db.query('UPDATE users SET proteinGoal = ? WHERE userID = ?', [proteinText, userID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
 
 app.listen(3001, () => {
     console.log("listening on localhost:3001");
