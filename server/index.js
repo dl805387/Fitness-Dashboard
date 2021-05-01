@@ -187,41 +187,15 @@ app.post('/getUserInfo', (req, res) => {
     });
 });
 
-//this works
-app.post('/getRoutines', (req, res) => {
-    const userID = req.body.userID;
 
-    db.query("SELECT * FROM routines WHERE userID = ? ORDER BY routineID DESC", [userID], (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    });
-});
-
-// add workout to db
-// this works
-app.post('/addRoutine', (req, res) => {
-    const userID = req.body.userID;
-    const name = req.body.name;
-
-    db.query('INSERT INTO routines (userID, name) VALUES (?, ?)', [userID, name], (err, result)=> {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    })
-});
 
 // add workout to db
 app.post('/addWorkout', (req, res) => {
-    const routineID = req.body.routineID;
+    const userID = req.body.userID;
     const description = req.body.description;
     const date = req.body.date;
 
-    db.query('INSERT INTO workouts (routineID, description, date) VALUES (?,?,?)', [routineID, description, date], (err, result)=> {
+    db.query('INSERT INTO workouts (userID, description, date) VALUES (?,?,?)', [userID, description, date], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
@@ -232,9 +206,9 @@ app.post('/addWorkout', (req, res) => {
 
 // get workouts based on id
 app.post('/getWorkouts', (req, res) => {
-    const routineID = req.body.routineID;
+    const userID = req.body.userID;
 
-    db.query("SELECT * FROM workouts WHERE routineID = ? ORDER BY workoutID DESC", [routineID], (err, result) => {
+    db.query("SELECT * FROM workouts WHERE userID = ? ORDER BY workoutID DESC", [userID], (err, result) => {
         if (err) {
             console.log(err);
         } else {

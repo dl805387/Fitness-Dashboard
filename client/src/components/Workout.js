@@ -7,11 +7,9 @@ function Workout(props) {
         workoutID,
         description,
         date,
-        routineID
     } = props;
 
     const [edit, setEdit] = useState(false);
-
     const [editText, setEditText] = useState(description);
     const [editDate, setEditDate] = useState(date);
 
@@ -35,17 +33,16 @@ function Workout(props) {
     }
 
     // to do
-    // remove routineID if you dont need it
-    // that also means you dont need to pass routineID in
+
 
     // textarea need to change size if the text is long
     // either that or add a scroll affect
     // i think changes size is best
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, []);
+    // }, []);
 
     return (
         <div>

@@ -1,85 +1,81 @@
 import React, { useState, useEffect } from "react";
-import Routine from './Routine';
+import Workout from './Workout';
 const axios = require('axios').default;
 
 function Panel(props) {
 
     const {userID} = props;
 
-    const [routines, setRoutines] = useState([]);
-    const [routinePopup, setRoutinePopup] = useState(false);
-    const [routineID, setRoutineID] = useState(0);
+    
 
-    // This is used to add workout routine to the panel when a routine is added to database
-    const [routineList, setRoutineList] = useState([]);
+    const [description, setDescription] = useState("")
+    const [date, setDate] = useState("");
+    const [workouts, setWorkouts] = useState([]);
 
-    const [name, setName] = useState("");
+    const [workoutList, setWorkoutList] = useState([]);
 
-
-    // add routine to database and set the routineID
-    const addRoutine = () => {
-        axios.post('http://localhost:3001/addRoutine', {
+    const addWorkout = () => {
+        axios.post('http://localhost:3001/addWorkout', {
             userID: userID,
-            name: name
+            description: description,
+            date: date
         }).then((res) => {
             console.log("success");
-            // When a workout routine is added, it also gets added to the user interface
-
-            // setRoutineList(routineList.concat(  
-            //     <div key = {res.data.insertId} 
-            //     onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
-            //     >{name}</div>
-            // ));
-
-            setRoutineList(
-                [].concat(
-                    <div key = {res.data.insertId} 
-                    onClick={e => {e.preventDefault(); setRoutineID(res.data.insertId); setRoutinePopup(true); }}
-                    >{name}</div>)
-                .concat(routineList)
+            setWorkoutList(
+                [].concat(  
+                    <Workout workoutID={res.data.insertId} description={description} date={date} userID={userID} key = {res.data.insertId} />
+                ).concat(workoutList)
             );
-
-
-            setName("");
         });
+
+        setDescription("");
     }
 
     useEffect(() => {
-        // get workouts from databse that has the same userID
-        axios.post('http://localhost:3001/getRoutines', {
+        // get workouts
+        axios.post('http://localhost:3001/getWorkouts', {
             userID: userID
         }).then((res) => {
-            setRoutines(res.data);
+            setWorkouts(res.data);
         });
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = mm + '/' + dd + '/' + yyyy;
+        setDate(today);
     }, []);
 
     // to do
     // cant submit empty input field
 
+    // hide panel for mobile screen
+
 
     return (
         <div>
-            <div>Workout Routines</div>
+            <p>{"user id is " + userID}</p>
+
+            <textarea value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
+            <input defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
+
+            <div className="labelPlusBtn">
+                <label>Log Workout</label>
+                <button onClick={e => {e.preventDefault(); addWorkout(); }}>Plus</button>
+            </div>
+
+
+
 
 
             <div className="scroll">
-                {routineList}
-                {routines.map(x => {
-                    return <div key = {x.routineID} onClick={e => {e.preventDefault(); setRoutineID(x.routineID); setRoutinePopup(true); }}>{x.name}</div>
-                })}
+                {workoutList}
+                {workouts.map(x=>{
+                    return <Workout workoutID={x.workoutID} description={x.description} date={x.date} userID={userID} key = {x.workoutID} />
+                })}             
             </div>
 
-
-            <input value={name} onChange={e => {setName(e.target.value)}} ></input>
-            <div className="labelPlusBtn">
-                <label>Add Workout Routine</label>
-                <button onClick={e => {e.preventDefault(); addRoutine(); }}>Plus</button>         
-            </div>
-
-            
-
-
-            {routinePopup && <Routine routineID={routineID} setRoutinePopup={setRoutinePopup} />}
         </div>
     );
 }

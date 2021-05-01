@@ -31,6 +31,9 @@ function Dashboard(props) {
         }
     }, []);
 
+    // to do
+    // prevent users from resizing textarea
+
     return (
         <div>
             <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
