@@ -35,6 +35,8 @@ function Dashboard(props) {
     // to do
     // prevent users from resizing textarea
 
+    // add date
+
     return (
         <div>
             <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
@@ -54,7 +56,7 @@ function Dashboard(props) {
                     setProteinGoal = {setProteinGoal}
                 />
 
-                <Nutrition />
+                <Nutrition userID = {userID} />
             </div>
         </div>
     );

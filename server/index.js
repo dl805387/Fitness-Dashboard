@@ -288,6 +288,35 @@ app.put('/updateProteinGoal', (req, res) => {
     })
 });
 
+// updates nutrition intake
+app.put('/updateIntake', (req, res) => {
+    const userID = req.body.userID;
+    const calIntake = req.body.calIntake;
+    const carbIntake = req.body.carbIntake;
+    const proteinIntake = req.body.proteinIntake;
+
+    db.query('UPDATE users SET calIntake = ?, carbIntake = ?, proteinIntake = ? WHERE userID = ?', [calIntake, carbIntake, proteinIntake, userID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+//get nutrition intake
+app.post('/getIntake', (req, res) => {
+    const userID = req.body.userID;
+
+    db.query("SELECT * FROM users WHERE userID = ?", [userID], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 
 app.listen(3001, () => {
     console.log("listening on localhost:3001");

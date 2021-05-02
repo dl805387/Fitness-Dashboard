@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 const axios = require('axios').default;
 
+// url for testing purposes
+// https://api.edamam.com/api/nutrition-data?app_id=cb858920&app_key=23e79631876defaed65d9e35dd579c67&ingr=1%20large%20bagel
+
 function Nutrition(props) {
+
+    const {userID} = props;
 
     const APP_ID = "cb858920";
     const APP_KEY = "23e79631876defaed65d9e35dd579c67";
@@ -22,8 +27,8 @@ function Nutrition(props) {
         try {
             return await axios.get(url).then(res => {
                 setCalories(res.data.calories);
-                setCarbs(res.data.totalNutrients.CHOCDF.quantity.toFixed(2));
-                setProtein(res.data.totalNutrients.PROCNT.quantity.toFixed(2));
+                setCarbs(parseFloat(res.data.totalNutrients.CHOCDF.quantity.toFixed(2)));
+                setProtein(parseFloat(res.data.totalNutrients.PROCNT.quantity.toFixed(2)));
                 setName(food);
                 setHasSearch(true);
                 clear();
@@ -39,12 +44,34 @@ function Nutrition(props) {
         setQuantity("");
     }
 
+    // Adds the nutrition intake to the db to get total
+    const updateIntake = () => {
+
+        // First gets the values of intake then updates the intake
+        axios.post('http://localhost:3001/getIntake', {
+            userID: userID
+        }).then((res) => {
+            axios.put('http://localhost:3001/updateIntake', {
+                userID: userID,
+                calIntake: calories + res.data[0].calIntake,
+                carbIntake: carbs + res.data[0].carbIntake,
+                proteinIntake: protein + res.data[0].proteinIntake
+            }).then(() => {
+                console.log("success");
+            });            
+        });
+    }
+
+
+
     // to do
     // implement autocomplete
 
     // can data into db
     // show total nutrition intake
     // refresh button
+
+    // need to find a way to track total intake
 
     return (
         <div>
@@ -70,8 +97,11 @@ function Nutrition(props) {
                     <p>Calories {calories}</p>
                     <p>Carbs {carbs}</p>
                     <p>Protein {protein}</p>
+                    <button onClick={e => {e.preventDefault(); updateIntake(); }}>Track</button>
                 </div>
             )}
+
+           <button>reset</button>
         </div>
     );
 }
