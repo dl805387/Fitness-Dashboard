@@ -87,7 +87,7 @@ function Goals(props) {
     }
 
     const toggleEditProtein = () => {
-        if (editCardio) {
+        if (editProtein) {
             setEditProtein(false);
         } else {
             setEditProtein(true);
@@ -102,15 +102,15 @@ function Goals(props) {
                 <p>logo</p>
                 
                 {editWt ? (
-                    <textarea onChange={e => {setWtGoal(e.target.value)}}></textarea>
+                    <div>
+                        <textarea onChange={e => {setWtGoal(e.target.value)}}></textarea>
+                        <button onClick={e => {e.preventDefault(); updateWtGoal(); }}>Update</button>
+                    </div>
                 ) : (
-                    <textarea defaultValue={wtGoal} readOnly></textarea> 
-                )}
-                
-                {editWt ? (
-                    <button onClick={e => {e.preventDefault(); updateWtGoal(); }}>Update</button>
-                ) : (
-                    <button onClick={e => {e.preventDefault(); toggleEditWt()}}>Set Goal</button>
+                    <div>
+                        <textarea defaultValue={wtGoal} readOnly></textarea> 
+                        <button onClick={e => {e.preventDefault(); toggleEditWt()}}>Set Goal</button>
+                    </div>
                 )}
             </div>
 
@@ -119,15 +119,15 @@ function Goals(props) {
                 <p>logo</p>
                 
                 {editCardio ? (
-                    <textarea onChange={e => {setCardioGoal(e.target.value)}}></textarea>
+                    <div>
+                        <textarea onChange={e => {setCardioGoal(e.target.value)}}></textarea>
+                        <button onClick={e => {e.preventDefault(); updateCardioGoal(); }}>Update</button>
+                    </div>
                 ) : (
-                    <textarea defaultValue={cardioGoal} readOnly></textarea> 
-                )}
-                
-                {editCardio ? (
-                    <button onClick={e => {e.preventDefault(); updateCardioGoal(); }}>Update</button>
-                ) : (
-                    <button onClick={e => {e.preventDefault(); toggleEditCardio()}}>Set Goal</button>
+                    <div>
+                        <textarea defaultValue={cardioGoal} readOnly></textarea> 
+                        <button onClick={e => {e.preventDefault(); toggleEditCardio()}}>Set Goal</button>
+                    </div>
                 )}
             </div>
 
@@ -136,15 +136,15 @@ function Goals(props) {
                 <p>logo</p>
                 
                 {editCal ? (
-                    <textarea onChange={e => {setCalGoal(e.target.value)}}></textarea>
+                    <div>
+                        <textarea onChange={e => {setCalGoal(e.target.value)}}></textarea>
+                        <button onClick={e => {e.preventDefault(); updateCalGoal(); }}>Update</button>
+                    </div>
                 ) : (
-                    <textarea defaultValue={calGoal} readOnly></textarea> 
-                )}
-                
-                {editCal ? (
-                    <button onClick={e => {e.preventDefault(); updateCalGoal(); }}>Update</button>
-                ) : (
-                    <button onClick={e => {e.preventDefault(); toggleEditCal()}}>Set Goal</button>
+                    <div>
+                        <textarea defaultValue={calGoal} readOnly></textarea> 
+                        <button onClick={e => {e.preventDefault(); toggleEditCal()}}>Set Goal</button>
+                    </div>
                 )}
             </div>
 
@@ -153,15 +153,15 @@ function Goals(props) {
                 <p>logo</p>
                 
                 {editProtein ? (
-                    <textarea onChange={e => {setProteinGoal(e.target.value)}}></textarea>
+                    <div>
+                        <textarea onChange={e => {setProteinGoal(e.target.value)}}></textarea>
+                        <button onClick={e => {e.preventDefault(); updateProteinGoal(); }}>Update</button>
+                    </div>
                 ) : (
-                    <textarea defaultValue={proteinGoal} readOnly></textarea> 
-                )}
-                
-                {editProtein ? (
-                    <button onClick={e => {e.preventDefault(); updateProteinGoal(); }}>Update</button>
-                ) : (
-                    <button onClick={e => {e.preventDefault(); toggleEditProtein()}}>Set Goal</button>
+                    <div>
+                        <textarea defaultValue={proteinGoal} readOnly></textarea> 
+                        <button onClick={e => {e.preventDefault(); toggleEditProtein()}}>Set Goal</button>
+                    </div>
                 )}
             </div>
 

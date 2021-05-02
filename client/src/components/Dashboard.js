@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Panel from './Panel';
 import Goals from './Goals';
+import Nutrition from './Nutrition';
 const axios = require('axios').default;
 
 function Dashboard(props) {
@@ -52,6 +53,8 @@ function Dashboard(props) {
                     proteinGoal = {proteinGoal}
                     setProteinGoal = {setProteinGoal}
                 />
+
+                <Nutrition />
             </div>
         </div>
     );
