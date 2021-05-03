@@ -60,64 +60,57 @@ function Nutrition(props) {
         setQuantity("");
     }
 
-    // Adds the nutrition intake to the db to get total
+    // Updates the nutrition intake in the db
     const updateIntake = () => {
-
-        // First gets the values of intake then updates the intake
-        // axios.post('http://localhost:3001/getIntake', {
-        //     userID: userID
-        // }).then((res) => {
-        //     axios.put('http://localhost:3001/updateIntake', {
-        //         userID: userID,
-        //         calIntake: calories + res.data[0].calIntake,
-        //         carbIntake: carbs + res.data[0].carbIntake,
-        //         proteinIntake: protein + res.data[0].proteinIntake,
-        //         fatIntake: fat + res.data[0].fatIntake
-        //     }).then(() => {
-        //         console.log("success");
-        //     });            
-        // });
 
         axios.put('http://localhost:3001/updateIntake', {
             userID: userID,
-            calIntake: calories + totalCalories,
-            carbIntake: carbs + res.data[0].carbIntake,
-            proteinIntake: protein + res.data[0].proteinIntake,
-            fatIntake: fat + res.data[0].fatIntake
+            calIntake: calories + totalCal,
+            carbIntake: carbs + totalCarb,
+            proteinIntake: protein + totalProtein,
+            fatIntake: fat + totalFat
         }).then(() => {
             console.log("success");
-        }); 
+            setTotalCal(calories + totalCal);
+            setTotalCarb(carbs + totalCarb);
+            setTotalProtein(protein + totalProtein);
+            setTotalFat(fat + totalFat);
+        });
     }
 
 
-    //
     const [showChart, setShowChart] = useState(false);
-    const [chart, setChart] = useState("");
+    const [chart, setChart] = useState([]);
+
     const getChart = async () => {
+
+        const carbCalories = parseFloat((totalCarb * 4).toFixed(2));
+        const proteinCalories = parseFloat((totalProtein * 4).toFixed(2));
+        const fatCalories = parseFloat((totalFat * 9).toFixed(2));
+
+        const percentCarb = ((totalCarb * 4 * 100)/totalCal).toFixed(2) + "%";
+        const percentProtein = ((totalProtein * 4 * 100)/totalCal).toFixed(2) + "%";
+        const percentFat = ((totalFat * 9 * 100)/totalCal).toFixed(2) + "%";
 
         const myChart = new QuickChart();
         myChart
         .setConfig({
-            type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},
-            options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}
+            type:'doughnut',data:{labels:['Carbs ' + percentCarb,'Protein ' + percentProtein,'Fat ' + percentFat],
+            datasets:[{data:[carbCalories,proteinCalories,fatCalories]}]},
+            options:{plugins:{doughnutlabel:{labels:[{text:totalCal,font:{size:20}},{text:'Total Calories'}]}}}
         })
         .setWidth(800)
         .setHeight(400)
         .setBackgroundColor('transparent');
 
-        // Print the chart URL
-        console.log(myChart.getUrl());
-
         setChart(myChart.getUrl());
         setShowChart(true);
-        // setChart(
-        //     chart.concat(  
-        //         <img src={myChart.getUrl()}></img>
-        //     )
-        // );
-
-        //setChart(true);
+        //setChart(<img src={myChart.getUrl()}></img>);
     }
+
+    // useEffect(() => {
+    //     setShowChart(true);
+    // }, []);
 
     // to do
     // implement autocomplete
@@ -127,6 +120,8 @@ function Nutrition(props) {
     // refresh button
 
     // need to find a way to track total intake
+
+    // change color on chart
 
     return (
         <div>
@@ -138,7 +133,7 @@ function Nutrition(props) {
                 
                 <div>
                     <label>Quantity</label>
-                    <input value={quantity} placeholder="ex: small, large, cup" onChange={e => {setQuantity(e.target.value)}}></input>
+                    <input value={quantity} placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
                 </div>
 
                 <button onClick={e => {e.preventDefault(); getNutrition()}}>Search w/logo</button>
@@ -163,8 +158,10 @@ function Nutrition(props) {
 
 
            <button onClick={e => {e.preventDefault(); getChart(); }}>chart</button>
+           <button onClick={e => {e.preventDefault(); console.log(totalCal) }}>logs</button>
 
-           {showChart && (<img src={chart}></img>)}
+           {showChart && <img src={chart}></img>}
+
         </div>
     );
 }

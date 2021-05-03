@@ -33,10 +33,10 @@ function Dashboard(props) {
                 setCardioGoal(res.data[0].cardioGoal);
                 setCalGoal(res.data[0].calGoal);
                 setProteinGoal(res.data[0].proteinGoal);
-                setTotalCal(res.data[0].calIntake),
-                setTotalCarb(res.data[0].carbIntake),
-                setTotalProtein(res.data[0].proteinIntake),
-                setTotalFat(res.data[0].fatIntake)
+                setTotalCal(res.data[0].calIntake);
+                setTotalCarb(res.data[0].carbIntake);
+                setTotalProtein(res.data[0].proteinIntake);
+                setTotalFat(res.data[0].fatIntake);
             });
         }
     }, []);
