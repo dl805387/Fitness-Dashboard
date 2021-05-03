@@ -65,7 +65,9 @@ function Dashboard(props) {
                     setProteinGoal = {setProteinGoal}
                 />
 
-                <Nutrition 
+                
+
+                {totalFat !== 0 && (<Nutrition 
                     userID = {userID} 
                     totalCal = {totalCal}
                     totalCarb = {totalCarb}
@@ -75,7 +77,7 @@ function Dashboard(props) {
                     setTotalCarb = {setTotalCarb}
                     setTotalProtein = {setTotalProtein}
                     setTotalFat = {setTotalFat}
-                />
+                />)}
             </div>
         </div>
     );

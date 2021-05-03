@@ -126,11 +126,13 @@ function Nutrition(props) {
     // need to find a way to track total intake
 
     // change color on chart
+    // above chart, say Source of Calories
 
     // error handling for when emamam search turns out no good
     // figure out what to do with chart if user has nothing yet
     // in useeffect, you could do if else
-    // if everything is null, then make a chart displaying something
+    // if everything is null, then make a chart displaying an imported picture
+    // you can do this with setChart
 
     return (
         <div>
