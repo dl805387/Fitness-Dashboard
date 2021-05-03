@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from "react";
 const axios = require('axios').default;
+const QuickChart = require('quickchart-js');
 
 // url for testing purposes
 // https://api.edamam.com/api/nutrition-data?app_id=cb858920&app_key=23e79631876defaed65d9e35dd579c67&ingr=1%20large%20bagel
 
+// use edamam and quickchart api
+// put this in the readme
+
 function Nutrition(props) {
 
-    const {userID} = props;
+    const {
+        userID,
+        totalCal,
+        totalCarb,
+        totalProtein,
+        totalFat,
+        setTotalCal,
+        setTotalCarb,
+        setTotalProtein,
+        setTotalFat
+    } = props;
 
     const APP_ID = "cb858920";
     const APP_KEY = "23e79631876defaed65d9e35dd579c67";
@@ -18,6 +32,7 @@ function Nutrition(props) {
     const [calories, setCalories] = useState(0);
     const [carbs, setCarbs] = useState(0);
     const [protein, setProtein] = useState(0);
+    const [fat, setFat] = useState(0);
 
     const [hasSearch, setHasSearch] = useState(false);
 
@@ -29,6 +44,7 @@ function Nutrition(props) {
                 setCalories(res.data.calories);
                 setCarbs(parseFloat(res.data.totalNutrients.CHOCDF.quantity.toFixed(2)));
                 setProtein(parseFloat(res.data.totalNutrients.PROCNT.quantity.toFixed(2)));
+                setFat(parseFloat(res.data.totalNutrients.FAT.quantity.toFixed(2)));
                 setName(food);
                 setHasSearch(true);
                 clear();
@@ -48,21 +64,60 @@ function Nutrition(props) {
     const updateIntake = () => {
 
         // First gets the values of intake then updates the intake
-        axios.post('http://localhost:3001/getIntake', {
-            userID: userID
-        }).then((res) => {
-            axios.put('http://localhost:3001/updateIntake', {
-                userID: userID,
-                calIntake: calories + res.data[0].calIntake,
-                carbIntake: carbs + res.data[0].carbIntake,
-                proteinIntake: protein + res.data[0].proteinIntake
-            }).then(() => {
-                console.log("success");
-            });            
-        });
+        // axios.post('http://localhost:3001/getIntake', {
+        //     userID: userID
+        // }).then((res) => {
+        //     axios.put('http://localhost:3001/updateIntake', {
+        //         userID: userID,
+        //         calIntake: calories + res.data[0].calIntake,
+        //         carbIntake: carbs + res.data[0].carbIntake,
+        //         proteinIntake: protein + res.data[0].proteinIntake,
+        //         fatIntake: fat + res.data[0].fatIntake
+        //     }).then(() => {
+        //         console.log("success");
+        //     });            
+        // });
+
+        axios.put('http://localhost:3001/updateIntake', {
+            userID: userID,
+            calIntake: calories + totalCalories,
+            carbIntake: carbs + res.data[0].carbIntake,
+            proteinIntake: protein + res.data[0].proteinIntake,
+            fatIntake: fat + res.data[0].fatIntake
+        }).then(() => {
+            console.log("success");
+        }); 
     }
 
 
+    //
+    const [showChart, setShowChart] = useState(false);
+    const [chart, setChart] = useState("");
+    const getChart = async () => {
+
+        const myChart = new QuickChart();
+        myChart
+        .setConfig({
+            type:'doughnut',data:{labels:['January','February','March','April','May'],datasets:[{data:[50,60,70,180,190]}]},
+            options:{plugins:{doughnutlabel:{labels:[{text:'550',font:{size:20}},{text:'total'}]}}}
+        })
+        .setWidth(800)
+        .setHeight(400)
+        .setBackgroundColor('transparent');
+
+        // Print the chart URL
+        console.log(myChart.getUrl());
+
+        setChart(myChart.getUrl());
+        setShowChart(true);
+        // setChart(
+        //     chart.concat(  
+        //         <img src={myChart.getUrl()}></img>
+        //     )
+        // );
+
+        //setChart(true);
+    }
 
     // to do
     // implement autocomplete
@@ -97,11 +152,19 @@ function Nutrition(props) {
                     <p>Calories {calories}</p>
                     <p>Carbs {carbs}</p>
                     <p>Protein {protein}</p>
+                    <p>Fat {fat}</p>
                     <button onClick={e => {e.preventDefault(); updateIntake(); }}>Track</button>
                 </div>
             )}
 
            <button>reset</button>
+
+
+
+
+           <button onClick={e => {e.preventDefault(); getChart(); }}>chart</button>
+
+           {showChart && (<img src={chart}></img>)}
         </div>
     );
 }

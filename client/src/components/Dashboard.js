@@ -17,6 +17,11 @@ function Dashboard(props) {
     const [calGoal, setCalGoal] = useState("");
     const [proteinGoal, setProteinGoal] = useState("");
 
+    const [totalCal, setTotalCal] = useState(0);
+    const [totalCarb, setTotalCarb] = useState(0);
+    const [totalProtein, setTotalProtein] = useState(0);
+    const [totalFat, setTotalFat] = useState(0);
+
     useEffect(() => {
         // when user sign in, this will get the userID and other data
         if (user !== "") {
@@ -28,6 +33,10 @@ function Dashboard(props) {
                 setCardioGoal(res.data[0].cardioGoal);
                 setCalGoal(res.data[0].calGoal);
                 setProteinGoal(res.data[0].proteinGoal);
+                setTotalCal(res.data[0].calIntake),
+                setTotalCarb(res.data[0].carbIntake),
+                setTotalProtein(res.data[0].proteinIntake),
+                setTotalFat(res.data[0].fatIntake)
             });
         }
     }, []);
@@ -56,7 +65,17 @@ function Dashboard(props) {
                     setProteinGoal = {setProteinGoal}
                 />
 
-                <Nutrition userID = {userID} />
+                <Nutrition 
+                    userID = {userID} 
+                    totalCal = {totalCal}
+                    totalCarb = {totalCarb}
+                    totalProtein = {totalProtein}
+                    totalFat = {totalFat}
+                    setTotalCal = {setTotalCal}
+                    setTotalCarb = {setTotalCarb}
+                    setTotalProtein = {setTotalProtein}
+                    setTotalFat = {setTotalFat}
+                />
             </div>
         </div>
     );

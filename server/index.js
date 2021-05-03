@@ -294,8 +294,10 @@ app.put('/updateIntake', (req, res) => {
     const calIntake = req.body.calIntake;
     const carbIntake = req.body.carbIntake;
     const proteinIntake = req.body.proteinIntake;
+    const fatIntake = req.body.fatIntake;
 
-    db.query('UPDATE users SET calIntake = ?, carbIntake = ?, proteinIntake = ? WHERE userID = ?', [calIntake, carbIntake, proteinIntake, userID], (err, result)=> {
+
+    db.query('UPDATE users SET calIntake = ?, carbIntake = ?, proteinIntake = ?, fatIntake = ? WHERE userID = ?', [calIntake, carbIntake, proteinIntake, fatIntake, userID], (err, result)=> {
         if (err) {
             console.log(err);
         } else {
