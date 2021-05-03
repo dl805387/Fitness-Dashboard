@@ -71,6 +71,8 @@ function Nutrition(props) {
             fatIntake: fat + totalFat
         }).then(() => {
             console.log("success");
+            // updates the chart
+            getChart(calories + totalCal, carbs + totalCarb, protein + totalProtein, fat + totalFat);
             setTotalCal(calories + totalCal);
             setTotalCarb(carbs + totalCarb);
             setTotalProtein(protein + totalProtein);
@@ -82,35 +84,37 @@ function Nutrition(props) {
     const [showChart, setShowChart] = useState(false);
     const [chart, setChart] = useState([]);
 
-    const getChart = async () => {
+    const getChart = async (tcal, tc, tp, tf) => {
 
-        const carbCalories = parseFloat((totalCarb * 4).toFixed(2));
-        const proteinCalories = parseFloat((totalProtein * 4).toFixed(2));
-        const fatCalories = parseFloat((totalFat * 9).toFixed(2));
+        const carbCalories = parseFloat((tc * 4).toFixed(2));
+        const proteinCalories = parseFloat((tp * 4).toFixed(2));
+        const fatCalories = parseFloat((tf * 9).toFixed(2));
 
-        const percentCarb = ((totalCarb * 4 * 100)/totalCal).toFixed(2) + "%";
-        const percentProtein = ((totalProtein * 4 * 100)/totalCal).toFixed(2) + "%";
-        const percentFat = ((totalFat * 9 * 100)/totalCal).toFixed(2) + "%";
+        const percentCarb = ((tc * 4 * 100)/totalCal).toFixed(2) + "%";
+        const percentProtein = ((tp * 4 * 100)/totalCal).toFixed(2) + "%";
+        const percentFat = ((tf * 9 * 100)/totalCal).toFixed(2) + "%";
 
         const myChart = new QuickChart();
         myChart
         .setConfig({
             type:'doughnut',data:{labels:['Carbs ' + percentCarb,'Protein ' + percentProtein,'Fat ' + percentFat],
             datasets:[{data:[carbCalories,proteinCalories,fatCalories]}]},
-            options:{plugins:{doughnutlabel:{labels:[{text:totalCal,font:{size:20}},{text:'Total Calories'}]}}}
+            options:{plugins:{doughnutlabel:{labels:[{text:tcal,font:{size:20}},{text:'Total Calories'}]}}}
         })
         .setWidth(800)
         .setHeight(400)
         .setBackgroundColor('transparent');
 
-        setChart(myChart.getUrl());
-        setShowChart(true);
-        //setChart(<img src={myChart.getUrl()}></img>);
+        //setChart(myChart.getUrl());
+        //setShowChart(true);
+        setChart(<img src={myChart.getUrl()}></img>);
     }
 
-    // useEffect(() => {
-    //     setShowChart(true);
-    // }, []);
+    useEffect(() => {
+        //setShowChart(true);
+        console.log(totalCal);
+        getChart(totalCal, totalCarb, totalProtein, totalFat);
+    }, []);
 
     // to do
     // implement autocomplete
@@ -122,6 +126,11 @@ function Nutrition(props) {
     // need to find a way to track total intake
 
     // change color on chart
+
+    // error handling for when emamam search turns out no good
+    // figure out what to do with chart if user has nothing yet
+    // in useeffect, you could do if else
+    // if everything is null, then make a chart displaying something
 
     return (
         <div>
@@ -160,6 +169,7 @@ function Nutrition(props) {
            <button onClick={e => {e.preventDefault(); getChart(); }}>chart</button>
            <button onClick={e => {e.preventDefault(); console.log(totalCal) }}>logs</button>
 
+            {chart}
            {showChart && <img src={chart}></img>}
 
         </div>
