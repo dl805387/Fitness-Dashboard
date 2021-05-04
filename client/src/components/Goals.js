@@ -99,86 +99,124 @@ function Goals(props) {
 
     // maybe make bullseye bigger
     // also the icon like dumbbell bigger
+    // placeholder for textarea
 
     return (
         <div>
+
             <div className="weightTraining goal">
-                <p>Weight Training</p>
-                <div className="circle">
-                    <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
+                <div>
+                    <p>Weight Training</p>
+                    <div className="circle">
+                        <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
+                    </div>
                 </div>
-                {editWt ? (
-                    <div>
-                        <textarea className="textBox" onChange={e => {setWtGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateWtGoal();}}>Update</button>
-                    </div>
-                ) : (
-                    <div>
-                        <textarea className="textBox" defaultValue={wtGoal} readOnly></textarea> 
-                        <label>Set Goal</label>
-                        <FontAwesomeIcon icon="bullseye" size="2x" onClick={e => {e.preventDefault(); toggleEditWt();}} />
-                    </div>
-                )}
+
+                <div>
+                    {editWt ? (
+                        <div className="horzDisplay">       
+                            <textarea className="textBox" onChange={e => {setWtGoal(e.target.value)}}></textarea>
+                            <div>
+                                <button onClick={e => {e.preventDefault(); updateWtGoal();}}>Update</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" defaultValue={wtGoal} readOnly></textarea> 
+                            <div className="target">
+                                <label className="white">Set Goal</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditWt();}} />
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
+
 
             <div className="cardio goal">
-                <p>Cardio</p>
-                <div className="circle">
-                    <FontAwesomeIcon icon="heartbeat" size="2x"className="icon"  />
-                </div>
-                
-                {editCardio ? (
-                    <div>
-                        <textarea className="textBox" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateCardioGoal();}}>Update</button>
+                <div>
+                    <p>Cardio</p>
+                    <div className="circle">
+                        <FontAwesomeIcon icon="heartbeat" size="2x"className="icon"  />
                     </div>
-                ) : (
-                    <div>
-                        <textarea className="textBox" defaultValue={cardioGoal} readOnly></textarea> 
-                        <label>Set Goal</label>
-                        <FontAwesomeIcon icon="bullseye" size="2x" onClick={e => {e.preventDefault(); toggleEditCardio();}} />
-                    </div>
-                )}
+                </div>  
+
+                <div>
+                    {editCardio ? (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
+                            <div>
+                                <button onClick={e => {e.preventDefault(); updateCardioGoal();}}>Update</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" defaultValue={cardioGoal} readOnly></textarea> 
+                            <div className="target">
+                                <label className="white">Set Goal</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditCardio();}} />
+                            </div>
+                        </div>
+                    )}
+                </div>  
             </div>
+
 
             <div className="calories goal">
-                <p>Calories</p>
-                <div className="circle">
-                    <FontAwesomeIcon icon="hamburger" size="2x" className="icon" />
+                <div>
+                    <p>Calories</p>
+                    <div className="circle">
+                        <FontAwesomeIcon icon="hamburger" size="2x" className="icon" />
+                    </div>
                 </div>
-                
-                {editCal ? (
-                    <div>
-                        <textarea className="textBox" onChange={e => {setCalGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateCalGoal();}}>Update</button>
-                    </div>
-                ) : (
-                    <div>
-                        <textarea className="textBox" defaultValue={calGoal} readOnly></textarea> 
-                        <label>Set Goal</label>
-                        <FontAwesomeIcon icon="bullseye" size="2x" onClick={e => {e.preventDefault(); toggleEditCal();}} />
-                    </div>
-                )}
+
+                <div>
+                    {editCal ? (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" onChange={e => {setCalGoal(e.target.value)}}></textarea>
+                            <div>
+                                <button onClick={e => {e.preventDefault(); updateCalGoal();}}>Update</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" defaultValue={calGoal} readOnly></textarea> 
+                            <div className="target">
+                                <label className="white">Set Goal</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditCal();}} />
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
+
             <div className="protein goal">
-                <p>Protein</p>
-                <div className="circle">
-                    <FontAwesomeIcon icon="drumstick-bite" size="2x" className="icon" />
+                <div>
+                    <p>Protein</p>
+                    <div className="circle">
+                        <FontAwesomeIcon icon="drumstick-bite" size="2x" className="icon" />
+                    </div>
+                </div>  
+
+                <div>
+                    {editProtein ? (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
+                            <div>
+                                <button onClick={e => {e.preventDefault(); updateProteinGoal();}}>Update</button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="horzDisplay">
+                            <textarea className="textBox" defaultValue={proteinGoal} readOnly></textarea> 
+                            <div className="target">
+                                <label className="white">Set Goal</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditProtein();}} />
+                            </div>
+                        </div>
+                    )}
                 </div>
-                
-                {editProtein ? (
-                    <div>
-                        <textarea className="textBox" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateProteinGoal();}}>Update</button>
-                    </div>
-                ) : (
-                    <div>
-                        <textarea className="textBox" defaultValue={proteinGoal} readOnly></textarea> 
-                        <label>Set Goal</label>
-                        <FontAwesomeIcon icon="bullseye" size="2x" onClick={e => {e.preventDefault(); toggleEditProtein();}} />
-                    </div>
-                )}
             </div>
 
         </div>

@@ -9,7 +9,7 @@
 }
 
 .cardio {
-    background-image: linear-gradient(to right, rgb(198, 11, 255) , rgb(99, 15, 255));
+    background-image: linear-gradient(to right, rgb(218, 95, 255) , rgb(99, 15, 255));
 }
 
 .calories {
@@ -17,7 +17,7 @@
 }
 
 .protein {
-    background-image: linear-gradient(to right, rgb(255, 53, 137) , rgb(252, 36, 90));
+    background-image: linear-gradient(to right, rgb(255, 97, 163) , rgb(252, 36, 90));
 }
 
 .circle {
@@ -33,13 +33,25 @@
 .goal {
     border-radius: 20px;
     padding: 10px; 
-    margin: 5%;
+    margin: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
 }
 
 .textBox {
     resize: none;
-    width: 200px;
-    height: 100px;
+    width: 150px;
+    height: 75px;
+    margin: 20px;
+    margin-right: 5px;
+}
 
+.target {
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.white {
+    color: white;
 }
