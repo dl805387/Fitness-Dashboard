@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Workout from './Workout';
+import "./Fontawesomeicon.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const axios = require('axios').default;
 
 function Panel(props) {
@@ -68,7 +70,7 @@ function Panel(props) {
 
             <div className="labelPlusBtn">
                 <label>Log Workout</label>
-                <button onClick={e => {e.preventDefault(); addWorkout();}}>Plus</button>
+                <FontAwesomeIcon icon="plus-square" size="2x" onClick={e => {e.preventDefault(); addWorkout();}} />
             </div>
 
             {error && <p>Need to fill out space</p>}

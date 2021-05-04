@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Fontawesomeicon.js";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const axios = require('axios').default;
 
 function Workout(props) {
@@ -56,7 +56,7 @@ function Workout(props) {
             
 
             <FontAwesomeIcon icon="edit" size="2x" onClick={e => {e.preventDefault(); toggleEdit()}} />
-            <button onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false)}}>submit</button>
+            <button onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false)}}>save</button>
 
 
         </div>
