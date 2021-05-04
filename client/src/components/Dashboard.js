@@ -46,6 +46,9 @@ function Dashboard(props) {
 
     // add date
 
+    // use dog api as user pic
+    // maybe not
+
     return (
         <div>
             <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>

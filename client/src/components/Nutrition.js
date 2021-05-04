@@ -27,6 +27,8 @@ function Nutrition(props) {
 
     const [food, setFood] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [error, setError] = useState(false);
+    const [badSearch, setBadSearch] = useState(false);
 
     const [name, setName] = useState("");
     const [calories, setCalories] = useState(0);
@@ -37,10 +39,23 @@ function Nutrition(props) {
     const [hasSearch, setHasSearch] = useState(false);
 
     const getNutrition = async () => {
+        if (food === "" || quantity === "") {
+            setError(true);
+            setHasSearch(false);
+            return;
+        }
+
         var url = "https://api.edamam.com/api/nutrition-data?app_id=" + APP_ID + "&app_key=" + APP_KEY + "&ingr=" + "1%20" + quantity + "%20" + food;
 
         try {
             return await axios.get(url).then(res => {
+                if (res.data.calories === 0 && res.data.totalWeight === 0) {
+                    clear();
+                    setError(false);
+                    setBadSearch(true);
+                    setHasSearch(false);
+                    return;
+                }
                 setCalories(res.data.calories);
                 setCarbs(parseFloat(res.data.totalNutrients.CHOCDF.quantity.toFixed(2)));
                 setProtein(parseFloat(res.data.totalNutrients.PROCNT.quantity.toFixed(2)));
@@ -48,10 +63,14 @@ function Nutrition(props) {
                 setName(food);
                 setHasSearch(true);
                 clear();
+                setError(false);
+                setBadSearch(false);
             });
         } catch (error) {
             console.error(error);
             clear();
+            setBadSearch(true);
+            setHasSearch(false);
         }
     }
 
@@ -80,8 +99,6 @@ function Nutrition(props) {
         });
     }
 
-
-    const [showChart, setShowChart] = useState(false);
     const [chart, setChart] = useState([]);
 
     const getChart = async (tcal, tc, tp, tf) => {
@@ -105,34 +122,33 @@ function Nutrition(props) {
         .setHeight(400)
         .setBackgroundColor('transparent');
 
-        //setChart(myChart.getUrl());
-        //setShowChart(true);
         setChart(<img src={myChart.getUrl()}></img>);
     }
 
     useEffect(() => {
-        //setShowChart(true);
-        console.log(totalCal);
         getChart(totalCal, totalCarb, totalProtein, totalFat);
     }, []);
 
     // to do
     // implement autocomplete
 
-    // can data into db
-    // show total nutrition intake
     // refresh button
 
-    // need to find a way to track total intake
 
     // change color on chart
     // above chart, say Source of Calories
 
-    // error handling for when emamam search turns out no good
+    // change size of chart
+
+    
     // figure out what to do with chart if user has nothing yet
     // in useeffect, you could do if else
     // if everything is null, then make a chart displaying an imported picture
     // you can do this with setChart
+
+    // replace need to fill out space with a different message
+    // do this in nutrition and panel component
+    // make the error messages red
 
     return (
         <div>
@@ -151,6 +167,8 @@ function Nutrition(props) {
             </div>
 
 
+            {error && <p>Need to fill out space</p>}
+            {badSearch && <p>Could not find nutrition data</p>}
 
             {hasSearch && (
                 <div>
@@ -172,7 +190,6 @@ function Nutrition(props) {
            <button onClick={e => {e.preventDefault(); console.log(totalCal) }}>logs</button>
 
             {chart}
-           {showChart && <img src={chart}></img>}
 
         </div>
     );

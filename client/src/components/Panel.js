@@ -6,15 +6,20 @@ function Panel(props) {
 
     const {userID} = props;
 
-    
-
     const [description, setDescription] = useState("")
     const [date, setDate] = useState("");
-    const [workouts, setWorkouts] = useState([]);
 
+    const [workouts, setWorkouts] = useState([]);
     const [workoutList, setWorkoutList] = useState([]);
 
+    const [error, setError] = useState(false);
+
     const addWorkout = () => {
+        if (description === "" || date === "") {
+            setError(true);
+            return;
+        }
+
         axios.post('http://localhost:3001/addWorkout', {
             userID: userID,
             description: description,
@@ -29,6 +34,7 @@ function Panel(props) {
         });
 
         setDescription("");
+        setError(false);
     }
 
     useEffect(() => {
@@ -48,7 +54,7 @@ function Panel(props) {
     }, []);
 
     // to do
-    // cant submit empty input field
+    // make error message red
 
     // hide panel for mobile screen
 
@@ -65,7 +71,7 @@ function Panel(props) {
                 <button onClick={e => {e.preventDefault(); addWorkout(); }}>Plus</button>
             </div>
 
-
+            {error && <p>Need to fill out space</p>}
 
 
 

@@ -307,17 +307,19 @@ app.put('/updateIntake', (req, res) => {
 });
 
 //get nutrition intake
-app.post('/getIntake', (req, res) => {
-    const userID = req.body.userID;
+// dont need this
 
-    db.query("SELECT * FROM users WHERE userID = ?", [userID], (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    });
-});
+// app.post('/getIntake', (req, res) => {
+//     const userID = req.body.userID;
+
+//     db.query("SELECT * FROM users WHERE userID = ?", [userID], (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             res.send(result);
+//         }
+//     });
+// });
 
 
 app.listen(3001, () => {
