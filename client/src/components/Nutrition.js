@@ -36,13 +36,12 @@ function Nutrition(props) {
     const [protein, setProtein] = useState(0);
     const [fat, setFat] = useState(0);
 
-    const [hasSearch, setHasSearch] = useState(false);
     const [chart, setChart] = useState([]);
 
+    // Uses Edamam's api to get nutrition data
     const getNutrition = async () => {
         if (food === "" || quantity === "") {
             setError(true);
-            setHasSearch(false);
             return;
         }
 
@@ -54,7 +53,6 @@ function Nutrition(props) {
                     clear();
                     setError(false);
                     setBadSearch(true);
-                    setHasSearch(false);
                     return;
                 }
                 setCalories(res.data.calories);
@@ -62,7 +60,6 @@ function Nutrition(props) {
                 setProtein(parseFloat(res.data.totalNutrients.PROCNT.quantity.toFixed(2)));
                 setFat(parseFloat(res.data.totalNutrients.FAT.quantity.toFixed(2)));
                 setName(food);
-                setHasSearch(true);
                 clear();
                 setError(false);
                 setBadSearch(false);
@@ -71,7 +68,6 @@ function Nutrition(props) {
             console.error(error);
             clear();
             setBadSearch(true);
-            setHasSearch(false);
         }
     }
 
@@ -100,6 +96,7 @@ function Nutrition(props) {
         });
     }
 
+    // Uses quick chart api to get pie chart
     const getChart = async (tCal, tc, tp, tf) => {
 
         const carbCalories = parseFloat((tc * 4).toFixed(2));
@@ -198,16 +195,16 @@ function Nutrition(props) {
             {error && <p>Need to fill out space</p>}
             {badSearch && <p>Could not find nutrition data</p>}
 
-            {hasSearch && (
+            
                 <div>
                     <p>{name}</p>
                     <p>Calories {calories}</p>
                     <p>Carbs {carbs}</p>
                     <p>Protein {protein}</p>
                     <p>Fat {fat}</p>
-                    <button onClick={e => {e.preventDefault(); updateIntake();}}>Track</button>
+                    <button onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
                 </div>
-            )}
+            
 
             <h1>Source of Calories</h1>
             {chart}
