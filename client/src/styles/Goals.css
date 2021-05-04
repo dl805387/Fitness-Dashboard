@@ -1,0 +1,20 @@
+.icon {
+    color: rgb(255, 255, 255);
+}
+
+.weightTraining {
+    background-image: linear-gradient(to right, rgb(0, 247, 255) , rgb(6, 135, 255));
+    
+}
+
+.cardio {
+    background-image: linear-gradient(to right, rgb(198, 11, 255) , rgb(99, 15, 255));
+}
+
+.calories {
+    background-image: linear-gradient(to right, rgb(255, 196, 0) , rgb(255, 115, 0));
+}
+
+.protein {
+    background-image: linear-gradient(to right, rgb(255, 53, 137) , rgb(252, 36, 90));
+}

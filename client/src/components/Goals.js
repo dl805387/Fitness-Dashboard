@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Fontawesomeicon.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/Goals.css';
 const axios = require('axios').default;
 
 function Goals(props) {
@@ -97,13 +98,13 @@ function Goals(props) {
     }
 
     // maybe make bullseye bigger
-
+    // also the icon like dumbbell bigger
 
     return (
         <div>
-            <div style={{backgroundColor: "pink"}}>
+            <div className="weightTraining">
                 <p>Weight Training</p>
-                <p>logo</p>
+                <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
                 
                 {editWt ? (
                     <div>
@@ -119,9 +120,9 @@ function Goals(props) {
                 )}
             </div>
 
-            <div>
+            <div className="cardio">
                 <p>Cardio</p>
-                <p>logo</p>
+                <FontAwesomeIcon icon="heartbeat" size="2x" />
                 
                 {editCardio ? (
                     <div>
@@ -137,9 +138,9 @@ function Goals(props) {
                 )}
             </div>
 
-            <div>
+            <div className="calories">
                 <p>Calories</p>
-                <p>logo</p>
+                <FontAwesomeIcon icon="hamburger" size="2x" />
                 
                 {editCal ? (
                     <div>
@@ -155,9 +156,9 @@ function Goals(props) {
                 )}
             </div>
 
-            <div>
+            <div className="protein">
                 <p>Protein</p>
-                <p>logo</p>
+                <FontAwesomeIcon icon="drumstick-bite" size="2x" />
                 
                 {editProtein ? (
                     <div>

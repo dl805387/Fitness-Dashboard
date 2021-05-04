@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit, faPlusSquare, faSearchPlus, faBullseye } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlusSquare, faSearchPlus, faBullseye, faDumbbell, faHeartbeat, faHamburger, faDrumstickBite } from '@fortawesome/free-solid-svg-icons';
 
 
-library.add(faEdit, faPlusSquare, faSearchPlus, faBullseye);
+library.add(faEdit, faPlusSquare, faSearchPlus, faBullseye, faDumbbell, faHeartbeat, faHamburger, faDrumstickBite);
