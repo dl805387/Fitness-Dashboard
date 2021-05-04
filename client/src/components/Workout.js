@@ -55,12 +55,10 @@ function Workout(props) {
 
             
 
-            <button onClick={e => {e.preventDefault(); toggleEdit()}}>edit</button>
+            <FontAwesomeIcon icon="edit" size="2x" onClick={e => {e.preventDefault(); toggleEdit()}} />
             <button onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false)}}>submit</button>
 
-            
-            <FontAwesomeIcon icon="edit" size="2x" />
-    
+
         </div>
     );
 }
