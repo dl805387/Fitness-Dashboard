@@ -1,10 +1,11 @@
 .icon {
-    color: rgb(255, 255, 255);
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
 }
 
 .weightTraining {
     background-image: linear-gradient(to right, rgb(0, 247, 255) , rgb(6, 135, 255));
-    
 }
 
 .cardio {
@@ -17,4 +18,14 @@
 
 .protein {
     background-image: linear-gradient(to right, rgb(255, 53, 137) , rgb(252, 36, 90));
+}
+
+.circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px; 
+    text-align: center;
+    margin: 5%;
+    border-style: solid;
 }

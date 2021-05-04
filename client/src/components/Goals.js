@@ -104,8 +104,9 @@ function Goals(props) {
         <div>
             <div className="weightTraining">
                 <p>Weight Training</p>
-                <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
-                
+                <div className="circle">
+                    <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
+                </div>
                 {editWt ? (
                     <div>
                         <textarea onChange={e => {setWtGoal(e.target.value)}}></textarea>
@@ -122,7 +123,9 @@ function Goals(props) {
 
             <div className="cardio">
                 <p>Cardio</p>
-                <FontAwesomeIcon icon="heartbeat" size="2x" />
+                <div className="circle">
+                    <FontAwesomeIcon icon="heartbeat" size="2x"className="icon"  />
+                </div>
                 
                 {editCardio ? (
                     <div>
@@ -140,7 +143,9 @@ function Goals(props) {
 
             <div className="calories">
                 <p>Calories</p>
-                <FontAwesomeIcon icon="hamburger" size="2x" />
+                <div className="circle">
+                    <FontAwesomeIcon icon="hamburger" size="2x" className="icon" />
+                </div>
                 
                 {editCal ? (
                     <div>
@@ -158,7 +163,9 @@ function Goals(props) {
 
             <div className="protein">
                 <p>Protein</p>
-                <FontAwesomeIcon icon="drumstick-bite" size="2x" />
+                <div className="circle">
+                    <FontAwesomeIcon icon="drumstick-bite" size="2x" className="icon" />
+                </div>
                 
                 {editProtein ? (
                     <div>
