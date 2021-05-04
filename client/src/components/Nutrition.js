@@ -37,6 +37,7 @@ function Nutrition(props) {
     const [fat, setFat] = useState(0);
 
     const [hasSearch, setHasSearch] = useState(false);
+    const [chart, setChart] = useState([]);
 
     const getNutrition = async () => {
         if (food === "" || quantity === "") {
@@ -99,56 +100,83 @@ function Nutrition(props) {
         });
     }
 
-    const [chart, setChart] = useState([]);
-
-    const getChart = async (tcal, tc, tp, tf) => {
+    const getChart = async (tCal, tc, tp, tf) => {
 
         const carbCalories = parseFloat((tc * 4).toFixed(2));
         const proteinCalories = parseFloat((tp * 4).toFixed(2));
         const fatCalories = parseFloat((tf * 9).toFixed(2));
 
-        const percentCarb = ((tc * 4 * 100)/totalCal).toFixed(2) + "%";
-        const percentProtein = ((tp * 4 * 100)/totalCal).toFixed(2) + "%";
-        const percentFat = ((tf * 9 * 100)/totalCal).toFixed(2) + "%";
+        let percentCarb = "";
+        let percentProtein = "";
+        let percentFat = "";
+
+        // cant divide by 0
+        if (tCal !== 0) {
+            percentCarb = ((tc * 4 * 100)/tCal).toFixed(2) + "%";
+            percentProtein = ((tp * 4 * 100)/tCal).toFixed(2) + "%";
+            percentFat = ((tf * 9 * 100)/tCal).toFixed(2) + "%";
+        }
+
 
         const myChart = new QuickChart();
         myChart
         .setConfig({
             type:'doughnut',data:{labels:['Carbs ' + percentCarb,'Protein ' + percentProtein,'Fat ' + percentFat],
             datasets:[{data:[carbCalories,proteinCalories,fatCalories]}]},
-            options:{plugins:{doughnutlabel:{labels:[{text:tcal,font:{size:20}},{text:'Total Calories'}]}}}
+            options:{plugins:{doughnutlabel:{labels:[{text:tCal,font:{size:20}},{text:'Total Calories'}]}}}
         })
-        .setWidth(800)
+        .setWidth(400)
         .setHeight(400)
         .setBackgroundColor('transparent');
 
-        setChart(<img src={myChart.getUrl()}></img>);
+        
+        setChart(<img src={myChart.getUrl()} style={{width: "400px", height:"400px"}}></img>);
+    }
+
+    // reset total intake to 0
+    const resetIntake = () => {
+
+        axios.put('http://localhost:3001/updateIntake', {
+            userID: userID,
+            calIntake: 0,
+            carbIntake: 0,
+            proteinIntake: 0,
+            fatIntake: 0
+        }).then(() => {
+            console.log("success");
+            // updates the chart
+            getChart(0, 0, 0, 0);
+            setTotalCal(0);
+            setTotalCarb(0);
+            setTotalProtein(0);
+            setTotalFat(0);
+        });
     }
 
     useEffect(() => {
-        getChart(totalCal, totalCarb, totalProtein, totalFat);
+        if (totalCal !== null) {
+            getChart(totalCal, totalCarb, totalProtein, totalFat);
+        } else {
+            getChart(0, 0, 0, 0);
+        }
     }, []);
 
     // to do
     // implement autocomplete
 
-    // refresh button
 
+    // change color on chart; use brighter colors so text will show well
 
-    // change color on chart
-    // above chart, say Source of Calories
 
     // change size of chart
 
-    
-    // figure out what to do with chart if user has nothing yet
-    // in useeffect, you could do if else
-    // if everything is null, then make a chart displaying an imported picture
-    // you can do this with setChart
+
 
     // replace need to fill out space with a different message
     // do this in nutrition and panel component
     // make the error messages red
+
+
 
     return (
         <div>
@@ -177,19 +205,13 @@ function Nutrition(props) {
                     <p>Carbs {carbs}</p>
                     <p>Protein {protein}</p>
                     <p>Fat {fat}</p>
-                    <button onClick={e => {e.preventDefault(); updateIntake(); }}>Track</button>
+                    <button onClick={e => {e.preventDefault(); updateIntake();}}>Track</button>
                 </div>
             )}
 
-           <button>reset</button>
-
-
-
-
-           <button onClick={e => {e.preventDefault(); getChart(); }}>chart</button>
-           <button onClick={e => {e.preventDefault(); console.log(totalCal) }}>logs</button>
-
+            <h1>Source of Calories</h1>
             {chart}
+            <button onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
 
         </div>
     );

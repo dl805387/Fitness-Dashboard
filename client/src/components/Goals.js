@@ -104,7 +104,7 @@ function Goals(props) {
                 {editWt ? (
                     <div>
                         <textarea onChange={e => {setWtGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateWtGoal(); }}>Update</button>
+                        <button onClick={e => {e.preventDefault(); updateWtGoal();}}>Update</button>
                     </div>
                 ) : (
                     <div>
@@ -121,7 +121,7 @@ function Goals(props) {
                 {editCardio ? (
                     <div>
                         <textarea onChange={e => {setCardioGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateCardioGoal(); }}>Update</button>
+                        <button onClick={e => {e.preventDefault(); updateCardioGoal();}}>Update</button>
                     </div>
                 ) : (
                     <div>
@@ -138,7 +138,7 @@ function Goals(props) {
                 {editCal ? (
                     <div>
                         <textarea onChange={e => {setCalGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateCalGoal(); }}>Update</button>
+                        <button onClick={e => {e.preventDefault(); updateCalGoal();}}>Update</button>
                     </div>
                 ) : (
                     <div>
@@ -155,7 +155,7 @@ function Goals(props) {
                 {editProtein ? (
                     <div>
                         <textarea onChange={e => {setProteinGoal(e.target.value)}}></textarea>
-                        <button onClick={e => {e.preventDefault(); updateProteinGoal(); }}>Update</button>
+                        <button onClick={e => {e.preventDefault(); updateProteinGoal();}}>Update</button>
                     </div>
                 ) : (
                     <div>

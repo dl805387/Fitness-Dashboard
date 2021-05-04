@@ -68,7 +68,7 @@ function Panel(props) {
 
             <div className="labelPlusBtn">
                 <label>Log Workout</label>
-                <button onClick={e => {e.preventDefault(); addWorkout(); }}>Plus</button>
+                <button onClick={e => {e.preventDefault(); addWorkout();}}>Plus</button>
             </div>
 
             {error && <p>Need to fill out space</p>}
