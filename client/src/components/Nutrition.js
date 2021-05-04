@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./Fontawesomeicon.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const axios = require('axios').default;
 const QuickChart = require('quickchart-js');
 
@@ -188,7 +190,7 @@ function Nutrition(props) {
                     <input value={quantity} placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
                 </div>
 
-                <button onClick={e => {e.preventDefault(); getNutrition()}}>Search w/logo</button>
+                <FontAwesomeIcon icon="search-plus" size="2x" onClick={e => {e.preventDefault(); getNutrition()}} />
             </div>
 
 
