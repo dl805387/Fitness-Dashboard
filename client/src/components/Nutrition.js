@@ -134,7 +134,6 @@ function Nutrition(props) {
                         datalabels: {
                             display: true,
                             font: {
-                                color: 'red',
                                 weight: 'bold',
                                 size: 16,
                             },

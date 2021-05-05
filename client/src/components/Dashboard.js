@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Panel from './Panel';
 import Goals from './Goals';
 import Nutrition from './Nutrition';
+import '../styles/Dashboard.css'
 const axios = require('axios').default;
 
 function Dashboard(props) {
@@ -54,13 +55,15 @@ function Dashboard(props) {
     // here is an idea for mobile friendly
     // for the css style horzDisplay, make it not flex if screen is small
 
+    // add percent margin for the 4 sections (panel, goals, nutrition, profile)
+
 
     return (
         <div>
 
             <div className="horzDisplay">
                 {userID !== 0 && (<Panel userID = {userID} />)}
-                
+
                 <Goals 
                     userID = {userID} 
                     wtGoal = {wtGoal}
@@ -85,8 +88,14 @@ function Dashboard(props) {
                     setTotalFat = {setTotalFat}
                 />)}
 
-                <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
-                <p>Welcome, {user.email} </p>
+                <div className="profile">
+                    <div className="inner">
+                        <p>Welcome, {user.email} </p>
+                        <p>dog pic</p>
+                        <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
+                    </div>
+                </div>
+
             </div>
 
         </div>
