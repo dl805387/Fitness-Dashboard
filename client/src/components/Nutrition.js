@@ -238,16 +238,16 @@ function Nutrition(props) {
                             <th>{tableTitle()}</th>
                         </tr>
                         <tr>
-                            <td>Calories: {calories}</td>
+                            <td>Calories:<label className="quantity">{calories}</label></td>
                         </tr>
                         <tr>
-                            <td>Carbs: {carbs}</td>
+                            <td>Carbs:<label className="quantity">{carbs}</label></td>
                         </tr>
                         <tr>
-                            <td>Protein: {protein}</td>
+                            <td>Protein:<label className="quantity">{protein}</label></td>
                         </tr>
                         <tr>
-                            <td>Fat: {fat}</td>
+                            <td>Fat:<label className="quantity">{fat}</label></td>
                         </tr>
                     </table>
 
