@@ -44,6 +44,7 @@ function Nutrition(props) {
     // Uses Edamam's api to get nutrition data
     const getNutrition = async () => {
         if (food === "" || quantity === "") {
+            setBadSearch(false);
             setError(true);
             return;
         }
@@ -182,22 +183,23 @@ function Nutrition(props) {
         <div>
             <div className="horzDisplay">
                 <div>
-                    <label>Food</label>
-                    <input value={food} placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
+                    <div>
+                        <label>Food</label>
+                        <input value={food} placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
+                    </div>
+                    
+                    <div>
+                        <label>Quantity</label>
+                        <input value={quantity} placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
+                    </div>
                 </div>
-                
-                <div>
-                    <label>Quantity</label>
-                    <input value={quantity} placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
-                </div>
-
                 
                 <FontAwesomeIcon icon="search-plus" size="2x" onClick={e => {e.preventDefault(); getNutrition()}} />
             </div>
 
 
-            {error && <p>Need to fill out space</p>}
-            {badSearch && <p>Could not find nutrition data</p>}
+            {error && <p className="error">need to fill out both fields</p>}
+            {badSearch && <p className="error">could not find nutrition data</p>}
 
             
                 <div>

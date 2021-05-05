@@ -22,6 +22,11 @@
     cursor: pointer;
 }
 
+.error {
+    margin: 0px;
+    color:crimson;
+}
+
 
 
 /* this is for vertically aligning divs
