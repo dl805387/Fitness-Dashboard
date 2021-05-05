@@ -1,9 +1,17 @@
 .profile {
-    background-color: gold;
     width: 100%;
-    
+    margin: 20px;
 }
 
 .inner {
-    float:right;
+    float: right;
+    text-align: center;
+}
+
+.profilePic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: thin;
 }

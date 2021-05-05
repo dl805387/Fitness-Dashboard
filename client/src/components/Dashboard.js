@@ -24,6 +24,13 @@ function Dashboard(props) {
     const [totalFat, setTotalFat] = useState(0);
 
     const [showNutri, setShowNutri] = useState(false);
+    const [dogPic, setDogPic] = useState("");
+
+    // Uses Dog CEO's dog API for user profile pic!
+    const getDogPic = async () => {
+        const res = await axios.get('https://dog.ceo/api/breeds/image/random');
+        setDogPic(res.data.message);
+    }
 
     useEffect(() => {
         // when user sign in, this will get the userID and other data
@@ -41,6 +48,7 @@ function Dashboard(props) {
                 setTotalProtein(res.data[0].proteinIntake);
                 setTotalFat(res.data[0].fatIntake);
                 setShowNutri(true);
+                getDogPic();
             });
         }
     }, []);
@@ -91,7 +99,9 @@ function Dashboard(props) {
                 <div className="profile">
                     <div className="inner">
                         <p>Welcome, {user.email} </p>
-                        <p>dog profile pic</p>
+                        <div>
+                            {dogPic !== "" && (<img src={dogPic} className="profilePic"></img>)}
+                        </div>
                         <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                     </div>
                 </div>
