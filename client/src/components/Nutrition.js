@@ -103,35 +103,65 @@ function Nutrition(props) {
     // Uses quick chart api to get pie chart
     const getChart = async (tCal, tc, tp, tf) => {
 
-        const carbCalories = parseFloat((tc * 4).toFixed(2));
-        const proteinCalories = parseFloat((tp * 4).toFixed(2));
-        const fatCalories = parseFloat((tf * 9).toFixed(2));
-
         let percentCarb = "";
         let percentProtein = "";
         let percentFat = "";
 
         // cant divide by 0
         if (tCal !== 0) {
-            percentCarb = ((tc * 4 * 100)/tCal).toFixed(2) + "%";
-            percentProtein = ((tp * 4 * 100)/tCal).toFixed(2) + "%";
-            percentFat = ((tf * 9 * 100)/tCal).toFixed(2) + "%";
+            percentCarb = ((tc * 4 * 100)/tCal).toFixed(2);
+            percentProtein = ((tp * 4 * 100)/tCal).toFixed(2);
+            percentFat = ((tf * 9 * 100)/tCal).toFixed(2);
         }
 
 
         const myChart = new QuickChart();
         myChart
-        .setConfig({
-            type:'doughnut',data:{labels:['Carbs ' + percentCarb,'Protein ' + percentProtein,'Fat ' + percentFat],
-            datasets:[{data:[carbCalories,proteinCalories,fatCalories]}]},
-            options:{plugins:{doughnutlabel:{labels:[{text:tCal,font:{size:20}},{text:'Total Calories'}]}}}
-        })
-        .setWidth(400)
-        .setHeight(400)
+        .setConfig(
+            {
+                type: 'doughnut',
+                data: {
+                datasets: [
+                    {
+                    data: [percentCarb, percentProtein, percentFat],
+                    backgroundColor: [ 'rgb(255, 205, 86)', 'rgb(255, 99, 132)', 'rgb(75, 192, 192)'],
+                    },
+                ],
+                labels: ['Carbs', 'Protein', 'Fat'],
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            display: true,
+                            font: {
+                                color: 'red',
+                                weight: 'bold',
+                                size: 16,
+                            },
+                            formatter: (value) => {
+                                return value + '%';
+                            }
+                        },
+                        doughnutlabel: {
+                            labels: [{
+                                text: tCal,
+                                font: {
+                                    size: 30,
+                                    weight: 'bold'
+                                }
+                            }, {
+                                text: 'Total Calories'
+                            }]
+                        }
+                    }
+                }
+            }
+        )
+        .setWidth(300)
+        .setHeight(300)
         .setBackgroundColor('transparent');
-
-        
-        setChart(<img src={myChart.getUrl()} style={{width: "400px", height:"400px"}}></img>);
+  
+        setChart(<img src={myChart.getUrl()} style={{width: "350px", height:"350px"}}></img>);
     }
 
     // reset total intake to 0
@@ -247,7 +277,7 @@ function Nutrition(props) {
                     <button className="grayBtn" onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
                 </div>
             </div>
-            
+
             {chart}
 
         </div>
