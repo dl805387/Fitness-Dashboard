@@ -46,6 +46,10 @@
     margin: 20px;
     margin-right: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    outline: none;
 }
 
 .target {

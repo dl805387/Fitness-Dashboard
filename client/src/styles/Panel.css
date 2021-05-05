@@ -26,6 +26,7 @@
     border-radius: 10px;
     border-width: thin;
     padding: 5px;
+    outline: none;
 }
 
 .inputDate {
@@ -33,6 +34,7 @@
     border: none;
     background-color: #293d2b;
     color: white;
+    outline: none;
 }
 
 .topPanel {
