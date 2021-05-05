@@ -1,0 +1,24 @@
+.panel {
+    height: 100vh;
+    background-color: #293d2b;
+}
+
+
+.scroll {
+    border-top: 3px solid white;
+    background-color: #293d2b;
+    width: 250px;
+    height: 80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.labelPlusBtn {
+    border-style: solid;
+    border-color: white;
+    width: 150px;
+    margin: 10px;
+    display: flex;
+}

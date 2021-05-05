@@ -52,10 +52,15 @@ function Dashboard(props) {
     // use dog api as user pic
     // maybe not
 
+    // move the login and welcome sign
+
+    // here is an idea for mobile friendly
+    // for the css style horzDisplay, make it not flex if screen is small
+
+    // for onclick elements, make it so your mouse will change to the finger
+
     return (
         <div>
-            <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
-            <p>Welcome, {user.email} </p>
 
             <div className="horzDisplay">
                 {userID !== 0 && (<Panel userID = {userID} />)}
@@ -82,7 +87,11 @@ function Dashboard(props) {
                     setTotalProtein = {setTotalProtein}
                     setTotalFat = {setTotalFat}
                 />)}
+
+                <button onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
+                <p>Welcome, {user.email} </p>
             </div>
+
         </div>
     );
 }

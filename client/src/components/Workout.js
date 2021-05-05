@@ -49,13 +49,28 @@ function Workout(props) {
     return (
         <div>
             
-            {edit ? (<> <textarea defaultValue={description} onChange={e => {setEditText(e.target.value)}} ></textarea> </>) : (<> <textarea defaultValue={description} readOnly></textarea> </>)}
+            {edit ? (
+                <div>
+                    <textarea className="inputLog" defaultValue={description} onChange={e => {setEditText(e.target.value)}} ></textarea> 
+                </div>
+            ) : (
+                <div> 
+                    <textarea className="inputLog" defaultValue={description} readOnly></textarea> 
+                </div>
+            )}
             
-            {edit ? (<> <input defaultValue={date} onChange={e => {setEditDate(e.target.value)}} ></input> </>) : (<> <input defaultValue={date} readOnly></input> </>)}
+            {edit ? (
+                <div> 
+                    <input className="inputDate" defaultValue={date} onChange={e => {setEditDate(e.target.value)}} ></input> 
+                </div>
+            ) : (
+                <div> 
+                    <input className="inputDate" defaultValue={date} readOnly></input> 
+                </div>
+            )}
 
             
-
-            <FontAwesomeIcon icon="edit" size="2x" onClick={e => {e.preventDefault(); toggleEdit()}} />
+            <FontAwesomeIcon icon="edit" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEdit()}} />
             <button onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false)}}>save</button>
 
 

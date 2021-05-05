@@ -97,9 +97,9 @@ function Goals(props) {
         }
     }
 
-    // maybe make bullseye bigger
-    // also the icon like dumbbell bigger
+
     // placeholder for textarea
+    // style for update button
 
     return (
         <div>

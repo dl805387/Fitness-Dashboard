@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Workout from './Workout';
 import "./Fontawesomeicon.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/Panel.css';
 const axios = require('axios').default;
 
 function Panel(props) {
@@ -64,15 +65,14 @@ function Panel(props) {
 
 
     return (
-        <div>
-            <p>{"user id is " + userID}</p>
+        <div className="panel">
 
-            <textarea value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
-            <input defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
+            <textarea className="inputLog" value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
+            <input className="inputDate" defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
 
             <div className="labelPlusBtn">
-                <label>Log Workout</label>
-                <FontAwesomeIcon icon="plus-square" size="2x" onClick={e => {e.preventDefault(); addWorkout();}} />
+                <label className="white">Log Workout</label>
+                <FontAwesomeIcon icon="plus-square" size="2x" className="white" onClick={e => {e.preventDefault(); addWorkout();}} />
             </div>
 
             {error && <p>Need to fill out space</p>}

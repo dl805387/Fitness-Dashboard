@@ -44,14 +44,11 @@
     height: 75px;
     margin: 20px;
     margin-right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .target {
     text-align: center;
     line-height: 50px;
     vertical-align: middle;
-}
-
-.white {
-    color: white;
 }

@@ -2,22 +2,23 @@
     text-align: center;
 }
 
-.scroll {
-    background-color: #fed9ff;
-    width: 600px;
-    height: 150px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: center;
-    padding: 20px;
-}
-
-.labelPlusBtn {
-    display: flex;
-}
-
 .horzDisplay {
     display: flex;
+}
+
+.white {
+    color: white;
+}
+
+.inputLog {
+    resize: none;
+    width: 200px;
+    height: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.inputDate {
+    width: 100px;
 }
 
 
