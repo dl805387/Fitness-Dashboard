@@ -69,8 +69,8 @@ function Panel(props) {
         <div className="panel">
 
             <div className="topPanel">
-                <textarea className="inputLog" value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
                 <input className="inputDate" defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
+                <textarea className="inputLog" value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
 
                 {error && <p className="error">field is empty</p>}
 

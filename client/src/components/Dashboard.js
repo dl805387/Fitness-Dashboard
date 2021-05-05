@@ -60,6 +60,7 @@ function Dashboard(props) {
 
             <div className="horzDisplay">
                 {userID !== 0 && (<Panel userID = {userID} />)}
+                
                 <Goals 
                     userID = {userID} 
                     wtGoal = {wtGoal}

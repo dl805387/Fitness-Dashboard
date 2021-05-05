@@ -118,7 +118,7 @@ function Goals(props) {
 
                 <div>
                     {editWt ? (
-                        <div className="horzDisplay">       
+                        <div className="horz">       
                             <textarea className="textBox" onChange={e => {setWtGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
@@ -126,7 +126,7 @@ function Goals(props) {
                             </div>
                         </div>
                     ) : (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" defaultValue={wtGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
@@ -148,7 +148,7 @@ function Goals(props) {
 
                 <div>
                     {editCardio ? (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
@@ -156,7 +156,7 @@ function Goals(props) {
                             </div>
                         </div>
                     ) : (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" defaultValue={cardioGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
@@ -178,7 +178,7 @@ function Goals(props) {
 
                 <div>
                     {editCal ? (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" onChange={e => {setCalGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
@@ -186,7 +186,7 @@ function Goals(props) {
                             </div>
                         </div>
                     ) : (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" defaultValue={calGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
@@ -208,7 +208,7 @@ function Goals(props) {
 
                 <div>
                     {editProtein ? (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
@@ -216,7 +216,7 @@ function Goals(props) {
                             </div>
                         </div>
                     ) : (
-                        <div className="horzDisplay">
+                        <div className="horz">
                             <textarea className="textBox" defaultValue={proteinGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>

@@ -185,55 +185,70 @@ function Nutrition(props) {
     // do this in nutrition and panel component
     // make the error messages red
 
+    // if user press enter, then have the same affect as search
+    // see if you can make this so that user must be clicked on the input field
+
 
 
     return (
         <div>
-            <div className="horzDisplay">
-                <div>
+            <div className="horz">
+                <div className="apiForm">
                     <div>
-                        <label className="food">Food</label>
-                        <input value={food} placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
+                        <label>Food</label>
+                        <input value={food} type="text" placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
                     </div>
                     
                     <div>
                         <label>Quantity</label>
-                        <input value={quantity} placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
+                        <input value={quantity} type="text" placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
+                    </div>
+
+                    {error && <p className="error">need to fill out both fields</p>}
+                    {badSearch && <p className="error">could not find nutrition data</p>}
+
+                    <div className="labelAndIcon">
+                        <div className="searchLabel">
+                            <label>Search</label>
+                        </div>
+                        <FontAwesomeIcon icon="search-plus" size="2x" className="searchIcon" onClick={e => {e.preventDefault(); getNutrition()}} />
                     </div>
                 </div>
-                
-                <FontAwesomeIcon icon="search-plus" size="2x" className="search" onClick={e => {e.preventDefault(); getNutrition()}} />
+
+                <div>
+                    <table>
+                        <tr>
+                            <th>{tableTitle()}</th>
+                        </tr>
+                        <tr>
+                            <td>Calories: {calories}</td>
+                        </tr>
+                        <tr>
+                            <td>Carbs: {carbs}</td>
+                        </tr>
+                        <tr>
+                            <td>Protein: {protein}</td>
+                        </tr>
+                        <tr>
+                            <td>Fat: {fat}</td>
+                        </tr>
+                    </table>
+
+                    <button className="grayBtn" onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
+                </div>
             </div>
 
-
-            {error && <p className="error">need to fill out both fields</p>}
-            {badSearch && <p className="error">could not find nutrition data</p>}
-
             
-                <table>
-                    <tr>
-                        <th>{tableTitle()}</th>
-                    </tr>
-                    <tr>
-                        <td>Calories {calories}</td>
-                    </tr>
-                    <tr>
-                        <td>Carbs {carbs}</td>
-                    </tr>
-                    <tr>
-                        <td>Protein {protein}</td>
-                    </tr>
-                    <tr>
-                        <td>Fat {fat}</td>
-                    </tr>
-                </table>
-
-                <button onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
+            <div className="titleAndReset">
+                <div>
+                    <h2 className="chartTitle">Source of Calories</h2>
+                </div>
+                <div>
+                    <button className="grayBtn" onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
+                </div>
+            </div>
             
-
-            <h1>Source of Calories</h1>
             {chart}
-            <button onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
 
         </div>
     );

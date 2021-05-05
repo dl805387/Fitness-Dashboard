@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.horz {
+    display: flex;
+}
+
 .white {
     color: white;
 }
@@ -15,6 +19,7 @@
     background-color: white;
     margin-bottom: 20px;
     cursor: pointer;
+    border: none;
 }
 
 .whiteIcon {
