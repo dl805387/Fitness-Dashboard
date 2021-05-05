@@ -154,6 +154,14 @@ function Nutrition(props) {
         });
     }
 
+    const tableTitle = () => {
+        if (name === "") {
+            return "Item";
+        } else {
+            return name;
+        }
+    }
+
     useEffect(() => {
         if (totalCal !== null) {
             getChart(totalCal, totalCarb, totalProtein, totalFat);
@@ -184,7 +192,7 @@ function Nutrition(props) {
             <div className="horzDisplay">
                 <div>
                     <div>
-                        <label>Food</label>
+                        <label className="food">Food</label>
                         <input value={food} placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
                     </div>
                     
@@ -194,7 +202,7 @@ function Nutrition(props) {
                     </div>
                 </div>
                 
-                <FontAwesomeIcon icon="search-plus" size="2x" onClick={e => {e.preventDefault(); getNutrition()}} />
+                <FontAwesomeIcon icon="search-plus" size="2x" className="search" onClick={e => {e.preventDefault(); getNutrition()}} />
             </div>
 
 
@@ -202,14 +210,25 @@ function Nutrition(props) {
             {badSearch && <p className="error">could not find nutrition data</p>}
 
             
-                <div>
-                    <p>{name}</p>
-                    <p>Calories {calories}</p>
-                    <p>Carbs {carbs}</p>
-                    <p>Protein {protein}</p>
-                    <p>Fat {fat}</p>
-                    <button onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
-                </div>
+                <table>
+                    <tr>
+                        <th>{tableTitle()}</th>
+                    </tr>
+                    <tr>
+                        <td>Calories {calories}</td>
+                    </tr>
+                    <tr>
+                        <td>Carbs {carbs}</td>
+                    </tr>
+                    <tr>
+                        <td>Protein {protein}</td>
+                    </tr>
+                    <tr>
+                        <td>Fat {fat}</td>
+                    </tr>
+                </table>
+
+                <button onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
             
 
             <h1>Source of Calories</h1>
