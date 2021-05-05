@@ -124,7 +124,7 @@ function Nutrition(props) {
                 datasets: [
                     {
                     data: [percentCarb, percentProtein, percentFat],
-                    backgroundColor: [ 'rgb(255, 205, 86)', 'rgb(255, 99, 132)', 'rgb(75, 192, 192)'],
+                    backgroundColor: [ 'rgb(255, 205, 86)', 'rgb(255, 151, 151)', 'rgb(125, 216, 216)'],
                     },
                 ],
                 labels: ['Carbs', 'Protein', 'Fat'],
@@ -203,19 +203,7 @@ function Nutrition(props) {
     // implement autocomplete
 
 
-    // change color on chart; use brighter colors so text will show well
 
-
-    // change size of chart
-
-
-
-    // replace need to fill out space with a different message
-    // do this in nutrition and panel component
-    // make the error messages red
-
-    // if user press enter, then have the same affect as search
-    // see if you can make this so that user must be clicked on the input field
 
 
 

@@ -52,3 +52,12 @@
     font-weight: bold;
     color: white;
 }
+
+.whiteBtn {
+    color: black;
+    background-color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}

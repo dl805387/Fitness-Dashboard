@@ -91,7 +91,7 @@ function Dashboard(props) {
                 <div className="profile">
                     <div className="inner">
                         <p>Welcome, {user.email} </p>
-                        <p>dog pic</p>
+                        <p>dog profile pic</p>
                         <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                     </div>
                 </div>

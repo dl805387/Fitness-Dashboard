@@ -34,6 +34,10 @@ function Workout(props) {
         }
     }
 
+    // to do
+    // replace edit button with save if user clicks on edit
+    // add delete
+
     return (
         <div>
 

@@ -57,7 +57,6 @@ function Panel(props) {
     }, []);
 
     // to do
-    // make error message red
 
     // hide panel for mobile screen
 

@@ -99,7 +99,6 @@ function Goals(props) {
 
 
     // placeholder for textarea
-    // style for update button
 
     // clicking set goal makes the textarea get slightly larger
     // not sure how to fix
