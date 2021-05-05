@@ -63,8 +63,6 @@ function Panel(props) {
 
     // add placeholder value for input field
 
-    // when you click on input field, it glows red
-    // find a way to remove it
 
 
     return (

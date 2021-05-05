@@ -101,6 +101,10 @@ function Goals(props) {
     // placeholder for textarea
     // style for update button
 
+    // clicking set goal makes the textarea get slightly larger
+    // not sure how to fix
+    // if you cant fix then its fine
+
     return (
         <div>
 
@@ -116,8 +120,9 @@ function Goals(props) {
                     {editWt ? (
                         <div className="horzDisplay">       
                             <textarea className="textBox" onChange={e => {setWtGoal(e.target.value)}}></textarea>
-                            <div>
-                                <button onClick={e => {e.preventDefault(); updateWtGoal();}}>Update</button>
+                            <div className="target">
+                                <label className="white">Update</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateWtGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -145,8 +150,9 @@ function Goals(props) {
                     {editCardio ? (
                         <div className="horzDisplay">
                             <textarea className="textBox" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
-                            <div>
-                                <button onClick={e => {e.preventDefault(); updateCardioGoal();}}>Update</button>
+                            <div className="target">
+                                <label className="white">Update</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCardioGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -174,8 +180,9 @@ function Goals(props) {
                     {editCal ? (
                         <div className="horzDisplay">
                             <textarea className="textBox" onChange={e => {setCalGoal(e.target.value)}}></textarea>
-                            <div>
-                                <button onClick={e => {e.preventDefault(); updateCalGoal();}}>Update</button>
+                            <div className="target">
+                                <label className="white">Update</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCalGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -203,8 +210,9 @@ function Goals(props) {
                     {editProtein ? (
                         <div className="horzDisplay">
                             <textarea className="textBox" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
-                            <div>
-                                <button onClick={e => {e.preventDefault(); updateProteinGoal();}}>Update</button>
+                            <div className="target">
+                                <label className="white">Update</label>
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateProteinGoal();}} />
                             </div>
                         </div>
                     ) : (

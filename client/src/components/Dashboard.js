@@ -45,19 +45,15 @@ function Dashboard(props) {
     }, []);
 
     // to do
-    // prevent users from resizing textarea
-
-    // add date
 
     // use dog api as user pic
-    // maybe not
+
 
     // move the login and welcome sign
 
     // here is an idea for mobile friendly
     // for the css style horzDisplay, make it not flex if screen is small
 
-    // for onclick elements, make it so your mouse will change to the finger
 
     return (
         <div>

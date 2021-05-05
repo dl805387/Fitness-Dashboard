@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Fontawesomeicon.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../styles/Nutrition.css'
 const axios = require('axios').default;
 const QuickChart = require('quickchart-js');
 

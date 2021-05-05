@@ -34,18 +34,6 @@ function Workout(props) {
         }
     }
 
-    // to do
-
-
-    // textarea need to change size if the text is long
-    // either that or add a scroll affect
-    // i think changes size is best
-
-
-    // useEffect(() => {
-
-    // }, []);
-
     return (
         <div>
 
