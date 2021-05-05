@@ -61,3 +61,8 @@
     border: none;
     border-radius: 15px;
 }
+
+.inputLog::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(216, 212, 212);
+    opacity: 1; /* Firefox */
+}

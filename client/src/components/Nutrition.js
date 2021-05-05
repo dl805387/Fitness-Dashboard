@@ -251,7 +251,9 @@ function Nutrition(props) {
                         </tr>
                     </table>
 
+                    <div className="track">
                     <button className="grayBtn" onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
+                    </div>
                 </div>
             </div>
 
