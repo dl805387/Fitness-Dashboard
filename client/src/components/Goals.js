@@ -106,7 +106,7 @@ function Goals(props) {
 
             <div className="weightTraining goal">
                 <div>
-                    <p>Weight Training</p>
+                    <p className="wt">Weight Training</p>
                     <div className="circle">
                         <FontAwesomeIcon icon="dumbbell" size="2x" className="icon" />
                     </div>
@@ -125,7 +125,7 @@ function Goals(props) {
                             <textarea className="textBox" defaultValue={wtGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditWt();}} />
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEditWt();}} />
                             </div>
                         </div>
                     )}
@@ -154,7 +154,7 @@ function Goals(props) {
                             <textarea className="textBox" defaultValue={cardioGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditCardio();}} />
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEditCardio();}} />
                             </div>
                         </div>
                     )}
@@ -183,7 +183,7 @@ function Goals(props) {
                             <textarea className="textBox" defaultValue={calGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditCal();}} />
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEditCal();}} />
                             </div>
                         </div>
                     )}
@@ -212,7 +212,7 @@ function Goals(props) {
                             <textarea className="textBox" defaultValue={proteinGoal} readOnly></textarea> 
                             <div className="target">
                                 <label className="white">Set Goal</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="white" onClick={e => {e.preventDefault(); toggleEditProtein();}} />
+                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEditProtein();}} />
                             </div>
                         </div>
                     )}

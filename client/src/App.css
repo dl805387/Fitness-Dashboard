@@ -10,15 +10,16 @@
     color: white;
 }
 
-.inputLog {
-    resize: none;
-    width: 200px;
-    height: 75px;
-    font-family: Arial, Helvetica, sans-serif;
+.whiteBtn {
+    color: black;
+    background-color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 
-.inputDate {
-    width: 100px;
+.whiteIcon {
+    color: white;
+    cursor: pointer;
 }
 
 

@@ -63,20 +63,25 @@ function Panel(props) {
 
     // add placeholder value for input field
 
+    // when you click on input field, it glows red
+    // find a way to remove it
+
 
     return (
         <div className="panel">
 
-            <textarea className="inputLog" value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
-            <input className="inputDate" defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
+            <div className="topPanel">
+                <textarea className="inputLog" value={description} onChange={e => {setDescription(e.target.value)}}></textarea>
+                <input className="inputDate" defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
 
-            <div className="labelPlusBtn">
-                <label className="white">Log Workout</label>
-                <FontAwesomeIcon icon="plus-square" size="2x" className="white" onClick={e => {e.preventDefault(); addWorkout();}} />
+                {error && <p className="error">field is empty</p>}
+
+                <div className="labelPlusBtn">
+                    <label className="logLabel">Log Workout</label>
+                    <FontAwesomeIcon icon="plus-square" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); addWorkout();}} />
+                </div>
+
             </div>
-
-            {error && <p>Need to fill out space</p>}
-
 
 
             <div className="scroll">
