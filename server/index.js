@@ -321,6 +321,19 @@ app.put('/updateIntake', (req, res) => {
 //     });
 // });
 
+// delete workout
+app.post('/deleteWorkout', (req, res) => {
+    const workoutID = req.body.workoutID;
+
+    db.query('DELETE FROM workouts WHERE workoutID = ?', [workoutID], (err, result)=> {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
 
 app.listen(3001, () => {
     console.log("listening on localhost:3001");
