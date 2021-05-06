@@ -56,10 +56,6 @@ function Panel(props) {
         setDate(today);
     }, []);
 
-    // to do
-
-    // hide panel for mobile screen
-
     return (
         <div className="panel">
 

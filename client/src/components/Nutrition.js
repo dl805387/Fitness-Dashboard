@@ -215,12 +215,12 @@ function Nutrition(props) {
                 <div className="apiForm">
                     <div>
                         <label>Food</label>
-                        <input value={food} type="text" placeholder="ex: cheesecake" onChange={e => {setFood(e.target.value)}}></input>
+                        <input className="inputStyle" value={food} type="text" placeholder="ex: cheesecake" onChange={e => {setFood(e.target.value)}}></input>
                     </div>
                     
                     <div>
                         <label>Quantity</label>
-                        <input value={quantity} type="text" placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
+                        <input className="inputStyle" value={quantity} type="text" placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
                     </div>
 
                     {error && <p className="error">need to fill out both fields</p>}

@@ -53,64 +53,54 @@ function Dashboard(props) {
         }
     }, []);
 
-    // to do
-
-
-
-    // here is an idea for mobile friendly
-    // for the css style horzDisplay, make it not flex if screen is small
-
-    // add percent margin for the 4 sections (panel, goals, nutrition, profile)
-
-
     return (
         <div>
 
             <div className="horzDisplay">
-    <div className="panelWGoal">
-                {userID !== 0 && (<Panel userID = {userID} />)}
 
+                <div className="panelWGoal">
+                    {userID !== 0 && (<Panel userID = {userID} />)}
 
-                <div className="goalSection">
-                    <Goals 
-                        userID = {userID} 
-                        wtGoal = {wtGoal}
-                        setWtGoal = {setWtGoal}
-                        cardioGoal = {cardioGoal }
-                        setCardioGoal = {setCardioGoal}
-                        calGoal = {calGoal }
-                        setCalGoal = {setCalGoal}
-                        proteinGoal = {proteinGoal}
-                        setProteinGoal = {setProteinGoal}
-                    />
-                </div>
-    </div>      
-
-    <div className="nutritionWProfile">         
-                <div className="nutritionSection">
-                    {showNutri && (<Nutrition 
-                        userID = {userID} 
-                        totalCal = {totalCal}
-                        totalCarb = {totalCarb}
-                        totalProtein = {totalProtein}
-                        totalFat = {totalFat}
-                        setTotalCal = {setTotalCal}
-                        setTotalCarb = {setTotalCarb}
-                        setTotalProtein = {setTotalProtein}
-                        setTotalFat = {setTotalFat}
-                    />)}
-                </div>
-
-                <div className="profile">
-                    <div className="inner">
-                        <p>Welcome, {user.email} </p>
-                        <div>
-                            {dogPic !== "" && (<img src={dogPic} className="profilePic"></img>)}
-                        </div>
-                        <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
+                    <div className="goalSection">
+                        <Goals 
+                            userID = {userID} 
+                            wtGoal = {wtGoal}
+                            setWtGoal = {setWtGoal}
+                            cardioGoal = {cardioGoal }
+                            setCardioGoal = {setCardioGoal}
+                            calGoal = {calGoal }
+                            setCalGoal = {setCalGoal}
+                            proteinGoal = {proteinGoal}
+                            setProteinGoal = {setProteinGoal}
+                        />
                     </div>
-                </div>
-    </div> 
+                </div>      
+
+                <div className="nutritionWProfile">         
+                    <div className="nutritionSection">
+                        {showNutri && (<Nutrition 
+                            userID = {userID} 
+                            totalCal = {totalCal}
+                            totalCarb = {totalCarb}
+                            totalProtein = {totalProtein}
+                            totalFat = {totalFat}
+                            setTotalCal = {setTotalCal}
+                            setTotalCarb = {setTotalCarb}
+                            setTotalProtein = {setTotalProtein}
+                            setTotalFat = {setTotalFat}
+                        />)}
+                    </div>
+
+                    <div className="profile">
+                        <div className="inner">
+                            <p>Welcome, {user.email} </p>
+                            <div>
+                                {dogPic !== "" && (<img src={dogPic} className="profilePic"></img>)}
+                            </div>
+                            <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
+                        </div>
+                    </div>
+                </div> 
 
             </div>
 

@@ -1,5 +1,5 @@
 .profile {
-    width: 200px;
+    width: 100%;
     margin: 10px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .goalSection {
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
 }
 
@@ -42,10 +42,19 @@
 {
     .panelWGoal {
         display: flex;
+        width: 60%;
     }
     
     .nutritionWProfile {
         display: flex;
     }
 
+}
+
+@media (max-width: 1000px) 
+{
+    .profile {
+        width: 200px;
+        margin: 10px;
+    }
 }
