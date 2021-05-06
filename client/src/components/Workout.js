@@ -24,7 +24,7 @@ function Workout(props) {
             description: editText,
             date: editDate
         }).then(() => {
-            console.log("success");
+            //console.log("success");
         });
     }
 
@@ -32,7 +32,7 @@ function Workout(props) {
         axios.post('http://localhost:3001/deleteWorkout', {
             workoutID: workoutID
         }).then(() => {
-            console.log("success");
+            //console.log("success");
         });
     }
 
@@ -45,15 +45,10 @@ function Workout(props) {
         }
     }
 
-    // to do
-    // replace edit button with save if user clicks on edit
-    // add delete
-
     return (
         <div>
             {!isDeleted && 
                 (<div>
-
                     {edit ? (
                         <div> 
                             <input className="inputDate" defaultValue={date} onChange={e => {setEditDate(e.target.value)}} ></input> 
@@ -73,15 +68,6 @@ function Workout(props) {
                             </div>
                         </div>
                     )}
-
-
-                    
-
-                    
-
-                    
-                    
-
                 </div>)
             }
         </div>
@@ -89,5 +75,3 @@ function Workout(props) {
 }
 
 export default Workout;
-{/* <FontAwesomeIcon icon="edit" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEdit();}} />
-<button className="whiteBtn" onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false);}}>save</button> */}

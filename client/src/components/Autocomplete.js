@@ -12,7 +12,6 @@ class Autocomplete extends Component {
         };
     }
 
-
     onChange = e => {
         const { suggestions, setQuantity } = this.props;
         const userInput = e.currentTarget.value;

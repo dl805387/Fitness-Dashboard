@@ -29,7 +29,7 @@ function Goals(props) {
             userID: userID,
             wtGoal: wtGoal,
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             toggleEditWt()
         });
     }
@@ -39,7 +39,7 @@ function Goals(props) {
             userID: userID,
             cardioGoal: cardioGoal,
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             toggleEditCardio()
         });
     }
@@ -49,7 +49,7 @@ function Goals(props) {
             userID: userID,
             calGoal: calGoal,
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             toggleEditCal()
         });
     }
@@ -59,7 +59,7 @@ function Goals(props) {
             userID: userID,
             proteinGoal: proteinGoal,
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             toggleEditProtein()
         });
     }

@@ -7,8 +7,6 @@ const axios = require('axios').default;
 
 function App() {
 
-    // remember to remove all console logs before you submit
-
     const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -69,7 +67,7 @@ function App() {
                     axios.post('http://localhost:3001/addUser', {
                         username: email
                     }).then(() => {
-                        console.log("success");
+                        //console.log("success");
                     });
                 } 
             });

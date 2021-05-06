@@ -70,7 +70,7 @@ function Nutrition(props) {
                 setBadSearch(false);
             });
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             clear();
             setBadSearch(true);
         }
@@ -91,7 +91,7 @@ function Nutrition(props) {
             proteinIntake: protein + totalProtein,
             fatIntake: fat + totalFat
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             // updates the chart
             getChart(calories + totalCal, carbs + totalCarb, protein + totalProtein, fat + totalFat);
             setTotalCal(calories + totalCal);
@@ -175,7 +175,7 @@ function Nutrition(props) {
             proteinIntake: 0,
             fatIntake: 0
         }).then(() => {
-            console.log("success");
+            //console.log("success");
             // updates the chart
             getChart(0, 0, 0, 0);
             setTotalCal(0);

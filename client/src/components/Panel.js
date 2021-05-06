@@ -28,7 +28,7 @@ function Panel(props) {
             description: description,
             date: date
         }).then((res) => {
-            console.log("success");
+            //console.log("success");
             setWorkoutList(
                 [].concat(  
                     <Workout workoutID={res.data.insertId} description={description} date={date} userID={userID} key = {res.data.insertId} />
@@ -41,7 +41,7 @@ function Panel(props) {
     }
 
     useEffect(() => {
-        // get workouts
+        // get workouts from database
         axios.post('http://localhost:3001/getWorkouts', {
             userID: userID
         }).then((res) => {
