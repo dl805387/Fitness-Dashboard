@@ -135,3 +135,12 @@ class Autocomplete extends Component {
 }
 
 export default Autocomplete;
+
+
+
+/*
+This component contains code from the tutorial "How To Build an Autocomplete Component in React" on digitalocean.com
+Author: joshtronic
+Editor: Natalia Vargas-Caba
+Originally Published on August 19, 2018
+*/
