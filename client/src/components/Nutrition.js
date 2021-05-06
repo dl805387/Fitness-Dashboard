@@ -78,7 +78,8 @@ function Nutrition(props) {
     // Updates the nutrition intake in the db
     const updateIntake = () => {
 
-        axios.put('http://localhost:3001/updateIntake', {
+
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateIntake', {
             userID: userID,
             calIntake: calories + totalCal,
             carbIntake: carbs + totalCarb,
@@ -162,7 +163,7 @@ function Nutrition(props) {
     // reset total intake to 0
     const resetIntake = () => {
 
-        axios.put('http://localhost:3001/updateIntake', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateIntake', {
             userID: userID,
             calIntake: 0,
             carbIntake: 0,

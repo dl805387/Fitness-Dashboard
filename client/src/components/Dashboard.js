@@ -35,7 +35,7 @@ function Dashboard(props) {
     useEffect(() => {
         // when user sign in, this will get the userID and other data
         if (user !== "") {
-            axios.post('http://localhost:3001/getUserInfo', {
+            axios.post('https://fitness-dashboard-dl.herokuapp.com/getUserInfo', {
                 username: user.email
             }).then((res) => {
                 setUserID(res.data[0].userID);

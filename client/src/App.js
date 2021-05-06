@@ -64,7 +64,7 @@ function App() {
                 //Only add new user to database if there are no errors with firebase.
                 if (!isError) {
                     // When user successfully sign up, they will be added to database
-                    axios.post('http://localhost:3001/addUser', {
+                    axios.post('https://fitness-dashboard-dl.herokuapp.com/addUser', {
                         username: email
                     }).then(() => {
                         //console.log("success");

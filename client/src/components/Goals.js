@@ -25,7 +25,7 @@ function Goals(props) {
     const [editProtein, setEditProtein] = useState(false);
 
     const updateWtGoal = () => {
-        axios.put('http://localhost:3001/updateWtGoal', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateWtGoal', {
             userID: userID,
             wtGoal: wtGoal,
         }).then(() => {
@@ -35,7 +35,7 @@ function Goals(props) {
     }
 
     const updateCardioGoal = () => {
-        axios.put('http://localhost:3001/updatecardioGoal', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updatecardioGoal', {
             userID: userID,
             cardioGoal: cardioGoal,
         }).then(() => {
@@ -45,7 +45,7 @@ function Goals(props) {
     }
 
     const updateCalGoal = () => {
-        axios.put('http://localhost:3001/updateCalGoal', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateCalGoal', {
             userID: userID,
             calGoal: calGoal,
         }).then(() => {
@@ -55,7 +55,7 @@ function Goals(props) {
     }
 
     const updateProteinGoal = () => {
-        axios.put('http://localhost:3001/updateProteinGoal', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateProteinGoal', {
             userID: userID,
             proteinGoal: proteinGoal,
         }).then(() => {

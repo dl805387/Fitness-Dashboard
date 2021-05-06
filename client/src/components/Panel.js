@@ -23,7 +23,7 @@ function Panel(props) {
             return;
         }
 
-        axios.post('http://localhost:3001/addWorkout', {
+        axios.post('https://fitness-dashboard-dl.herokuapp.com/addWorkout', {
             userID: userID,
             description: description,
             date: date
@@ -42,7 +42,7 @@ function Panel(props) {
 
     useEffect(() => {
         // get workouts from database
-        axios.post('http://localhost:3001/getWorkouts', {
+        axios.post('https://fitness-dashboard-dl.herokuapp.com/getWorkouts', {
             userID: userID
         }).then((res) => {
             setWorkouts(res.data);

@@ -2,15 +2,16 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
+const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    password: 'w',
-    database: 'fitnessDB'
+    user: 'b90ad4917e5b76',
+    host: 'us-cdbr-east-03.cleardb.com',
+    password: 'e15cf7df',
+    database: 'heroku_4f8a34eb5672695'
 });
 
 // this adds the user to the database with username
@@ -173,6 +174,11 @@ app.post('/deleteWorkout', (req, res) => {
 });
 
 
-app.listen(3001, () => {
-    console.log("listening on localhost:3001");
+app.listen(process.env.PORT || PORT, () => {
+    console.log("listening on localhost:" + PORT);
 });
+
+//mysql://b90ad4917e5b76:e15cf7df@us-cdbr-east-03.cleardb.com/heroku_4f8a34eb5672695?reconnect=true
+
+// username
+// b90ad4917e5b76
