@@ -111,10 +111,10 @@ function Goals(props) {
                 <div>
                     {editWt ? (
                         <div className="horz">       
-                            <textarea className="textBox" placeholder="Click on the target icon to set goal!" onChange={e => {setWtGoal(e.target.value)}}></textarea>
+                            <textarea className="textBox" placeholder="Click on the icon to save!" onChange={e => {setWtGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateWtGoal();}} />
+                                <FontAwesomeIcon icon="save" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateWtGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -141,10 +141,10 @@ function Goals(props) {
                 <div>
                     {editCardio ? (
                         <div className="horz">
-                            <textarea className="textBox" placeholder="Click on the target icon to set goal!" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
+                            <textarea className="textBox" placeholder="Click on the icon to save!" onChange={e => {setCardioGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCardioGoal();}} />
+                                <FontAwesomeIcon icon="save" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCardioGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -171,10 +171,10 @@ function Goals(props) {
                 <div>
                     {editCal ? (
                         <div className="horz">
-                            <textarea className="textBox" placeholder="Click on the target icon to set goal!" onChange={e => {setCalGoal(e.target.value)}}></textarea>
+                            <textarea className="textBox" placeholder="Click on the icon to save!" onChange={e => {setCalGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCalGoal();}} />
+                                <FontAwesomeIcon icon="save" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateCalGoal();}} />
                             </div>
                         </div>
                     ) : (
@@ -201,10 +201,10 @@ function Goals(props) {
                 <div>
                     {editProtein ? (
                         <div className="horz">
-                            <textarea className="textBox" placeholder="Click on the target icon to set goal!" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
+                            <textarea className="textBox" placeholder="Click on the icon to save!" onChange={e => {setProteinGoal(e.target.value)}}></textarea>
                             <div className="target">
                                 <label className="white">Update</label>
-                                <FontAwesomeIcon icon="bullseye" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateProteinGoal();}} />
+                                <FontAwesomeIcon icon="save" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); updateProteinGoal();}} />
                             </div>
                         </div>
                     ) : (

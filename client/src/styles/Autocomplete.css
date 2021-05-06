@@ -19,7 +19,7 @@
 
 .suggestion-active,
 .suggestions li:hover {
-    background-color: #187cda;
+    background-color: #ff9100;
     color: #ffffff;
     cursor: pointer;
     font-weight: 700;
