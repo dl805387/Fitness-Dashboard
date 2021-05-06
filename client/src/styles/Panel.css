@@ -66,3 +66,13 @@
     color: rgb(216, 212, 212);
     opacity: 1; /* Firefox */
 }
+
+@media (max-width: 700px) 
+{
+    .panel {
+        height: 500px;
+        width: 300px;
+        background-color: #293d2b;
+        margin-bottom: 80px;
+    }
+}

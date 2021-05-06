@@ -67,31 +67,39 @@ function Dashboard(props) {
         <div>
 
             <div className="horzDisplay">
+    <div className="panelWGoal">
                 {userID !== 0 && (<Panel userID = {userID} />)}
 
-                <Goals 
-                    userID = {userID} 
-                    wtGoal = {wtGoal}
-                    setWtGoal = {setWtGoal}
-                    cardioGoal = {cardioGoal }
-                    setCardioGoal = {setCardioGoal}
-                    calGoal = {calGoal }
-                    setCalGoal = {setCalGoal}
-                    proteinGoal = {proteinGoal}
-                    setProteinGoal = {setProteinGoal}
-                />
 
-                {showNutri && (<Nutrition 
-                    userID = {userID} 
-                    totalCal = {totalCal}
-                    totalCarb = {totalCarb}
-                    totalProtein = {totalProtein}
-                    totalFat = {totalFat}
-                    setTotalCal = {setTotalCal}
-                    setTotalCarb = {setTotalCarb}
-                    setTotalProtein = {setTotalProtein}
-                    setTotalFat = {setTotalFat}
-                />)}
+                <div className="goalSection">
+                    <Goals 
+                        userID = {userID} 
+                        wtGoal = {wtGoal}
+                        setWtGoal = {setWtGoal}
+                        cardioGoal = {cardioGoal }
+                        setCardioGoal = {setCardioGoal}
+                        calGoal = {calGoal }
+                        setCalGoal = {setCalGoal}
+                        proteinGoal = {proteinGoal}
+                        setProteinGoal = {setProteinGoal}
+                    />
+                </div>
+    </div>      
+
+    <div className="nutritionWProfile">         
+                <div className="nutritionSection">
+                    {showNutri && (<Nutrition 
+                        userID = {userID} 
+                        totalCal = {totalCal}
+                        totalCarb = {totalCarb}
+                        totalProtein = {totalProtein}
+                        totalFat = {totalFat}
+                        setTotalCal = {setTotalCal}
+                        setTotalCarb = {setTotalCarb}
+                        setTotalProtein = {setTotalProtein}
+                        setTotalFat = {setTotalFat}
+                    />)}
+                </div>
 
                 <div className="profile">
                     <div className="inner">
@@ -102,6 +110,7 @@ function Dashboard(props) {
                         <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                     </div>
                 </div>
+    </div> 
 
             </div>
 

@@ -2,10 +2,6 @@
     text-align: center;
 }
 
-.horzDisplay {
-    display: flex;
-}
-
 .horz {
     display: flex;
 }
@@ -47,6 +43,13 @@ input, select {
     border-radius: 4px;
     box-sizing: border-box;
     outline: none;
+}
+
+@media (min-width: 700px) 
+{
+    .horzDisplay {
+        display: flex;
+    }
 }
 
 
