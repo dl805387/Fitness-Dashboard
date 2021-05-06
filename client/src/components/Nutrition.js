@@ -78,7 +78,7 @@ function Nutrition(props) {
 
     const clear = () => {
         setFood("");
-        setQuantity("");
+        //setQuantity("");
     }
 
     // Updates the nutrition intake in the db
@@ -221,7 +221,7 @@ function Nutrition(props) {
                     
                     <div>
                         <label>Quantity</label>
-                        <input className="inputStyle" value={quantity} type="text" placeholder="ex: large, cup, 100grams" onChange={e => {setQuantity(e.target.value)}}></input>
+                        <Autocomplete suggestions={["cup", "Apples", "Banana", "Kiwi", "Mango"]}   setQuantity={setQuantity}  />
                     </div>
 
                     {error && <p className="error">need to fill out both fields</p>}
@@ -273,8 +273,6 @@ function Nutrition(props) {
             </div>
 
             {chart}
-
-            <Autocomplete suggestions={["cup", "Apples", "Banana", "Kiwi", "Mango"]}   setQuantity={setQuantity}  />
 
         </div>
     );
