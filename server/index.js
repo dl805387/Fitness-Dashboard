@@ -15,7 +15,6 @@ const db = mysql.createConnection({
 
 // this adds the user to the database with username
 // user_id is generated automatically
-// this code is good. dont need to change unless you want to add more column to user table
 app.post('/addUser', (req, res) => {
     const username = req.body.username;
 
