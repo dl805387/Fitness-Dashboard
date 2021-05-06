@@ -103,9 +103,10 @@ function Nutrition(props) {
     // Uses quick chart api to get pie chart
     const getChart = async (tCal, tc, tp, tf) => {
 
-        let percentCarb = "";
-        let percentProtein = "";
-        let percentFat = "";
+        // This will be the default chart data if user has not tracked any nutrition intake
+        let percentCarb = 33.3;
+        let percentProtein = 33.3;
+        let percentFat = 33.3;
 
         // cant divide by 0
         if (tCal !== 0) {
@@ -124,7 +125,7 @@ function Nutrition(props) {
                 datasets: [
                     {
                     data: [percentCarb, percentProtein, percentFat],
-                    backgroundColor: [ 'rgb(255, 205, 86)', 'rgb(255, 151, 151)', 'rgb(125, 216, 216)'],
+                    backgroundColor: ['rgb(255, 205, 86)', 'rgb(255, 151, 151)', 'rgb(125, 216, 216)'],
                     },
                 ],
                 labels: ['Carbs', 'Protein', 'Fat'],
@@ -192,10 +193,11 @@ function Nutrition(props) {
     }
 
     useEffect(() => {
-        if (totalCal !== null) {
-            getChart(totalCal, totalCarb, totalProtein, totalFat);
-        } else {
+        // if nutrition intakes are null or zero, then the chart will be generated with 0 total calories
+        if (totalCal === null || (totalCal === 0 && totalCarb === 0 && totalProtein == 0 && totalFat === 0)) {
             getChart(0, 0, 0, 0);
+        } else {
+            getChart(totalCal, totalCarb, totalProtein, totalFat);
         }
     }, []);
 
@@ -213,7 +215,7 @@ function Nutrition(props) {
                 <div className="apiForm">
                     <div>
                         <label>Food</label>
-                        <input value={food} type="text" placeholder="ex: apple" onChange={e => {setFood(e.target.value)}}></input>
+                        <input value={food} type="text" placeholder="ex: cheesecake" onChange={e => {setFood(e.target.value)}}></input>
                     </div>
                     
                     <div>
@@ -234,21 +236,23 @@ function Nutrition(props) {
 
                 <div>
                     <table>
-                        <tr>
-                            <th>{tableTitle()}</th>
-                        </tr>
-                        <tr>
-                            <td>Calories:<label className="quantity">{calories}</label></td>
-                        </tr>
-                        <tr>
-                            <td>Carbs:<label className="quantity">{carbs}</label></td>
-                        </tr>
-                        <tr>
-                            <td>Protein:<label className="quantity">{protein}</label></td>
-                        </tr>
-                        <tr>
-                            <td>Fat:<label className="quantity">{fat}</label></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <th>{tableTitle()}</th>
+                            </tr>
+                            <tr>
+                                <td>Calories:<label className="quantity">{calories}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Carbs:<label className="quantity">{carbs}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Protein:<label className="quantity">{protein}</label></td>
+                            </tr>
+                            <tr>
+                                <td>Fat:<label className="quantity">{fat}</label></td>
+                            </tr>
+                        </tbody>
                     </table>
 
                     <div className="track">

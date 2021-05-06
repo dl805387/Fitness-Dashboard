@@ -97,9 +97,6 @@ function Goals(props) {
         }
     }
 
-
-    // placeholder for textarea
-
     return (
         <div>
 

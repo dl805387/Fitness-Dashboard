@@ -60,10 +60,6 @@ function Panel(props) {
 
     // hide panel for mobile screen
 
-    // add placeholder value for input field
-
-
-
     return (
         <div className="panel">
 

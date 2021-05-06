@@ -55,10 +55,7 @@ function Dashboard(props) {
 
     // to do
 
-    // use dog api as user pic
 
-
-    // move the login and welcome sign
 
     // here is an idea for mobile friendly
     // for the css style horzDisplay, make it not flex if screen is small
