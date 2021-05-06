@@ -162,7 +162,7 @@ function Nutrition(props) {
         .setHeight(300)
         .setBackgroundColor('transparent');
   
-        setChart(<img src={myChart.getUrl()} style={{width: "350px", height:"350px"}}></img>);
+        setChart(<img src={myChart.getUrl()} alt="Chart" style={{width: "350px", height:"350px"}}></img>);
     }
 
     // reset total intake to 0
@@ -195,20 +195,12 @@ function Nutrition(props) {
 
     useEffect(() => {
         // if nutrition intakes are null or zero, then the chart will be generated with 0 total calories
-        if (totalCal === null || (totalCal === 0 && totalCarb === 0 && totalProtein == 0 && totalFat === 0)) {
+        if (totalCal === null || (totalCal === 0 && totalCarb === 0 && totalProtein === 0 && totalFat === 0)) {
             getChart(0, 0, 0, 0);
         } else {
             getChart(totalCal, totalCarb, totalProtein, totalFat);
         }
     }, []);
-
-    // to do
-    // implement autocomplete
-
-
-
-
-
 
     return (
         <div>

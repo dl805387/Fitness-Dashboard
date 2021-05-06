@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function Login(props) {
 
@@ -18,25 +18,25 @@ function Login(props) {
     } = props;
 
     return (
-        <div className="App">
-            <div>
+        <div>
+            <div className="loginSection">
                 <label>Username</label>
-                <input type="text" autoFocus required value={email} onChange={(e) => {setEmail(e.target.value)}} />
-                <p>{emailError}</p>
+                <input className="inputStyle" type="text" placeholder="pseudo email" autoFocus required value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                <p className="error">{emailError}</p>
                 <label>Password</label>
-                <input type="password" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
-                <p>{passwordError}</p>
+                <input className="inputStyle" type="password" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                <p className="error">{passwordError}</p>
 
                 <div>
                     {hasAccount ? (
                         <>
-                            <button onClick={handleLogin}>Sign In</button>
-                            <p>Don't have an account ? <span onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign up</span></p>
+                            <button className="purpleBtn" onClick={handleLogin}>Sign In</button>
+                            <p>Don't have an account ? <span className="grayBtn" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign Up</span></p>
                         </>
                     ) : (
                         <>
-                            <button onClick={handleSignup}>Sign up</button>
-                            <p>Have an account ? <span onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign in</span></p>
+                            <button className="purpleBtn" onClick={handleSignup}>Sign Up</button>
+                            <p>Have an account ? <span className="grayBtn" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign In</span></p>
                         </>
                     )}
                 </div>

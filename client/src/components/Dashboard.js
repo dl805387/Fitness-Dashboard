@@ -95,7 +95,7 @@ function Dashboard(props) {
                         <div className="inner">
                             <p>Welcome, {user.email} </p>
                             <div>
-                                {dogPic !== "" && (<img src={dogPic} className="profilePic"></img>)}
+                                {dogPic !== "" && (<img src={dogPic} alt="Profile Pic" className="profilePic"></img>)}
                             </div>
                             <button className="grayBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                         </div>

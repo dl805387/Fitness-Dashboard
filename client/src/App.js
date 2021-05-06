@@ -28,12 +28,10 @@ function App() {
 
     const handleLogin = () => {
         clearErrors();
-        let isError = false;
         fire
             .auth()
             .signInWithEmailAndPassword(email, password)
             .catch(err => {
-                isError = true;
                 switch (err.code) {
                     case "auth/invalid-email":
                     case "auth/user-disabled":
