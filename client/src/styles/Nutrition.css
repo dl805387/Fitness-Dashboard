@@ -48,3 +48,14 @@ th, td {
     margin-left: 10px;
 }
 
+.trackBtn {
+    padding: 7px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+}
+

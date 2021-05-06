@@ -19,7 +19,7 @@
 
 .roundedBtn {
     margin: 10px;
-    background-color: #ffac40;
+    background-color: #dbd9d9;
     border: none;
     color: rgb(0, 0, 0);
     padding: 10px;
@@ -48,4 +48,3 @@
         display: flex;
     }
 }
-
