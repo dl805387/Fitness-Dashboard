@@ -17,9 +17,9 @@
     color:crimson;
 }
 
-.grayBtn {
+.roundedBtn {
     margin: 10px;
-    background-color: #e7e7e7;
+    background-color: #ffac40;
     border: none;
     color: rgb(0, 0, 0);
     padding: 10px;
@@ -40,31 +40,6 @@
     border-radius: 4px;
     box-sizing: border-box;
     outline: none;
-}
-
-.loginSection {
-    text-align: center;
-    width: 300px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.purpleBtn {
-    width: 100%;
-    margin: 0px;
-    background-color: #6500d8;
-    border: none;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
 }
 
 @media (min-width: 700px) 

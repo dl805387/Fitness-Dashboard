@@ -1,4 +1,7 @@
 import React from "react";
+import '../styles/Login.css'
+import "./Fontawesomeicon.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Login(props) {
 
@@ -20,23 +23,34 @@ function Login(props) {
     return (
         <div>
             <div className="loginSection">
-                <label>Username</label>
-                <input className="inputStyle" type="text" placeholder="pseudo email" autoFocus required value={email} onChange={(e) => {setEmail(e.target.value)}} />
-                <p className="error">{emailError}</p>
-                <label>Password</label>
-                <input className="inputStyle" type="password" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
-                <p className="error">{passwordError}</p>
+
+                <div className="bottomSpace">
+                    <label className="loginLabel">Username</label>
+                    <div className="loginPassword">
+                        <FontAwesomeIcon icon="user" size="2x" className="loginIcon" />
+                        <input className="loginInput" type="text" placeholder="pseudo email address" autoFocus required value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                        <p className="error">{emailError}</p>
+                    </div>
+                </div>
+
+                <label className="loginLabel">Password</label>
+                <div className="loginPassword">
+                    <FontAwesomeIcon icon="lock" size="2x" className="loginIcon" />
+                    <input className="loginInput" type="password" placeholder="at least 6 characters" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                    <p className="error">{passwordError}</p>
+                </div>
+
 
                 <div>
                     {hasAccount ? (
                         <>
-                            <button className="purpleBtn" onClick={handleLogin}>Sign In</button>
-                            <p>Don't have an account ? <span className="grayBtn" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign Up</span></p>
+                            <button className="signBtn" onClick={handleLogin}>Sign In</button>
+                            <p className="loginMessage">Don't have an account ? <span className="signLabel" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign Up</span></p>
                         </>
                     ) : (
                         <>
-                            <button className="purpleBtn" onClick={handleSignup}>Sign Up</button>
-                            <p>Have an account ? <span className="grayBtn" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign In</span></p>
+                            <button className="signBtn" onClick={handleSignup}>Sign Up</button>
+                            <p className="loginMessage">Have an account ? <span className="signLabel" onClick={() => {setHasAccount(!hasAccount); clearErrors(); clearInputs();}}>Sign In</span></p>
                         </>
                     )}
                 </div>

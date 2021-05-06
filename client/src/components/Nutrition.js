@@ -6,12 +6,6 @@ import Autocomplete from "./Autocomplete.js";
 const axios = require('axios').default;
 const QuickChart = require('quickchart-js');
 
-// url for testing purposes
-// https://api.edamam.com/api/nutrition-data?app_id=cb858920&app_key=23e79631876defaed65d9e35dd579c67&ingr=1%20large%20bagel
-
-// use edamam and quickchart api
-// put this in the readme
-
 function Nutrition(props) {
 
     const {
@@ -116,7 +110,7 @@ function Nutrition(props) {
             percentFat = ((tf * 9 * 100)/tCal).toFixed(2);
         }
 
-
+        
         const myChart = new QuickChart();
         myChart
         .setConfig(
@@ -126,7 +120,7 @@ function Nutrition(props) {
                 datasets: [
                     {
                     data: [percentCarb, percentProtein, percentFat],
-                    backgroundColor: ['rgb(255, 205, 86)', 'rgb(255, 151, 151)', 'rgb(125, 216, 216)'],
+                    backgroundColor: ['rgb(255, 159, 64)', 'rgb(247, 126, 126)', 'rgb(255, 205, 86)'],
                     },
                 ],
                 labels: ['Carbs', 'Protein', 'Fat'],
@@ -253,7 +247,7 @@ function Nutrition(props) {
                     </table>
 
                     <div className="track">
-                    <button className="grayBtn" onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
+                    <button className="roundedBtn" onClick={e => {e.preventDefault(); updateIntake();}}>Track Nutrition</button>
                     </div>
                 </div>
             </div>
@@ -264,7 +258,7 @@ function Nutrition(props) {
                     <h2 className="chartTitle">Source of Calories</h2>
                 </div>
                 <div>
-                    <button className="grayBtn" onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
+                    <button className="roundedBtn" onClick={e => {e.preventDefault(); resetIntake();}}>Reset</button>
                 </div>
             </div>
 
