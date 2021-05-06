@@ -1,0 +1,15 @@
+.whiteBtn {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+
+.editWDelete {
+    margin-bottom: 10px;
+}
+
+.trash {
+    margin-left: 10px;
+}

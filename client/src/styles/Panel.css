@@ -30,7 +30,7 @@
 }
 
 .inputDate {
-    width: 85px;
+    width: 70px;
     border: none;
     background-color: #293d2b;
     color: white;
@@ -40,6 +40,8 @@
 .topPanel {
     text-align: center;
     margin-top: 10px;
+    padding: 10px;
+    padding-bottom: 0px;
 }
 
 .labelPlusBtn {
@@ -51,15 +53,6 @@
     font-size: 20px;
     font-weight: bold;
     color: white;
-}
-
-.whiteBtn {
-    color: black;
-    background-color: white;
-    margin-bottom: 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
 }
 
 .inputLog::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
