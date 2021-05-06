@@ -19,8 +19,10 @@ Implemented user login authentication with firebase
 
 ## Setup
 To run this project locally, install it by using npm\
-$ npm install.\
+$ npm install\
 \
+Make sure you are in the fitness-dashboard folder\
+We need to run the server first\
 Go to the server folder and run index.js with nodemon\
 $ cd server\
 $ nodemon index.js\
@@ -28,11 +30,12 @@ $ nodemon index.js\
 Then go back to the parent folder\
 $ cd ..\
 \
+Now we will start the frontend\
 Go to the client folder to run the react project\
 $ cd client\
 $ npm start\
 \
-Enjoy!\
+Enjoy!
 
 
 
