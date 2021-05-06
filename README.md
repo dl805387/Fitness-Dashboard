@@ -9,12 +9,32 @@ Built with React for the frontend, Node.js and Express.js for the backend, and M
 Implemented user login authentication with firebase
 
 ## Technologies
-*React
-*Node.js
-*Express.js
-*MySQL
-*Firebase
-*Axios
-*Cors
+* React
+* Node.js
+* Express.js
+* MySQL
+* Firebase
+* Axios
+* Cors
+
+## Setup
+To run this project locally, install it by using npm\
+$ npm install.\
+\
+Go to the server folder and run index.js with nodemon\
+$ cd server\
+$ nodemon index.js\
+\
+Then go back to the parent folder\
+$ cd ..\
+\
+Go to the client folder to run the react project\
+$ cd client\
+$ npm start\
+\
+Enjoy!\
+
+
+
 
 
