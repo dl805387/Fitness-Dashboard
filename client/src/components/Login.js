@@ -24,6 +24,8 @@ function Login(props) {
         <div>
             <div className="loginSection">
 
+                <h2 className="loginTitle">Login</h2>
+
                 <div className="bottomSpace">
                     <label className="loginLabel">Username</label>
                     <div className="loginPassword">
