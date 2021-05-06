@@ -1,5 +1,3 @@
-
-  
 .no-suggestions {
     color: #999;
     padding: 0.5rem;
@@ -21,8 +19,8 @@
 
 .suggestion-active,
 .suggestions li:hover {
-    background-color: #008f68;
-    color: #fae042;
+    background-color: #187cda;
+    color: #ffffff;
     cursor: pointer;
     font-weight: 700;
 }

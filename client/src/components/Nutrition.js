@@ -221,7 +221,11 @@ function Nutrition(props) {
                     
                     <div>
                         <label>Quantity</label>
-                        <Autocomplete suggestions={["cup", "Apples", "Banana", "Kiwi", "Mango"]}  quantity={quantity}  setQuantity={setQuantity}  />
+                        <Autocomplete 
+                            suggestions={["small", "medium", "large", "cup", "pint", "quart", "gallon", "teaspoon", "tablespoon", "liter"]} 
+                            quantity={quantity} 
+                            setQuantity={setQuantity}
+                        />
                     </div>
 
                     {error && <p className="error">need to fill out both fields</p>}
