@@ -2,17 +2,21 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
-const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     user: 'b90ad4917e5b76',
     host: 'us-cdbr-east-03.cleardb.com',
     password: 'e15cf7df',
     database: 'heroku_4f8a34eb5672695'
 });
+
+
+
+
+
 
 // this adds the user to the database with username
 // user_id is generated automatically
@@ -174,11 +178,8 @@ app.post('/deleteWorkout', (req, res) => {
 });
 
 
-app.listen(process.env.PORT || PORT, () => {
-    console.log("listening on localhost:" + PORT);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
 });
-
-//mysql://b90ad4917e5b76:e15cf7df@us-cdbr-east-03.cleardb.com/heroku_4f8a34eb5672695?reconnect=true
-
-// username
-// b90ad4917e5b76
