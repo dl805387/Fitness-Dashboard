@@ -78,6 +78,7 @@ function Nutrition(props) {
     // Updates the nutrition intake in the db
     const updateIntake = () => {
 
+        
         axios.put('http://localhost:3001/updateIntake', {
             userID: userID,
             calIntake: calories + totalCal,
