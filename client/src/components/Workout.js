@@ -18,21 +18,23 @@ function Workout(props) {
 
     const [isDeleted, setIsDeleted] = useState(false);
 
+    // update workout description in database
     const updateWorkout = () => {
         axios.put('https://workout-journal-dl.herokuapp.com/updateWorkout', {
             workoutID: workoutID,
             description: editText,
             date: editDate
         }).then(() => {
-            console.log("success");
+            //console.log("success");
         });
     }
 
+    // remove workout from database
     const deleteWorkout = () => {
         axios.post('https://workout-journal-dl.herokuapp.com/deleteWorkout', {
             workoutID: workoutID
         }).then(() => {
-            console.log("success");
+            //console.log("success");
         });
     }
 

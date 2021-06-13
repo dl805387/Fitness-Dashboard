@@ -18,9 +18,6 @@ module.exports = connection;
 
 
 
-
-// replace db with connection
-
 // this adds the user to the database with username
 // user_id is generated automatically
 app.post('/addUser', (req, res) => {
@@ -95,9 +92,6 @@ app.put('/updateWorkout', (req, res) => {
 
 
 
-
-
-
 // delete workout
 app.post('/deleteWorkout', (req, res) => {
     const workoutID = req.body.workoutID;
@@ -116,7 +110,7 @@ app.post('/deleteWorkout', (req, res) => {
 
 app.get("/", (req, res) => {
 
-    res.json({ message: "Welcome to Workout Journal!!" });
+    res.json({ message: "Welcome to Workout Journal!" });
 
 });
 

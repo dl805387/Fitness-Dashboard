@@ -1,21 +1,21 @@
 .panel {
     height: 85vh;
-    background-color: burlywood;
+    background-color: rgb(230, 202, 166);
     width: 40%;
     margin: auto;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 .scroll {
-    border-top: 3px solid black;
-    background-color: burlywood;
+    border-top: 3px solid rgb(65, 64, 63);
+    background-color: rgb(230, 202, 166);
     height: 70%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
     padding: 20px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .inputLog {
@@ -36,7 +36,7 @@
 .inputDate {
     width: 70px;
     border: none;
-    background-color: burlywood;
+    background-color: rgb(230, 202, 166);
     color: black;
     outline: none;
     float: right;
@@ -80,6 +80,13 @@
 {
     .panel {
         width: 60%;
+        height: 70vh;
+    }
+
+    .profile {
+        display: flex;
+        float: none;
+        margin-left: 10px;
     }
 }
 
@@ -87,5 +94,12 @@
 {
     .panel {
         width: 80%;
+        height: 60vh;
+    }
+
+    .profile {
+        display: flex;
+        float: none;
+        margin-left: 10px;
     }
 }

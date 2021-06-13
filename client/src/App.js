@@ -77,7 +77,7 @@ function App() {
                     }).then(() => {
                         // get the userID
                         getUserID(email);
-                        console.log("success");
+                        //console.log("success");
                     });
                 } 
             });
@@ -111,7 +111,7 @@ function App() {
             }).then((res) => {
                 if (res.data[0]) {
                     setUserID(res.data[0].userID);
-                    console.log("success");
+                    //console.log("success");
                 }
             });
         }
@@ -125,7 +125,7 @@ function App() {
             }).then((res) => {
                 if (res.data[0]) {
                     setUserID(res.data[0].userID);
-                    console.log("success");
+                    //console.log("success");
                 }
             });
         }
@@ -139,8 +139,6 @@ function App() {
                         <p>Welcome, {user.email} </p>
                         <button className="roundedBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                     </div>
-
-                    <button onClick={e=>{e.preventDefault(); console.log(userID)}}>see id</button>
 
                     <div>
                         {userID !== 0 && (<Panel userID = {userID} />)}

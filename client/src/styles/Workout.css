@@ -1,8 +1,9 @@
 .whiteBtn {
+    font-size: 14px;
     color: black;
     background-color: white;
     cursor: pointer;
-    border: none;
+    border-color: black;
     border-radius: 15px;
 }
 
@@ -12,9 +13,4 @@
 
 .trash {
     margin-left: 10px;
-}
-
-.vert {
-    display: flex;
-    flex-direction: column;
 }

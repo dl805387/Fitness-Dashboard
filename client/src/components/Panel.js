@@ -17,6 +17,7 @@ function Panel(props) {
 
     const [error, setError] = useState(false);
 
+    // add workout to database
     const addWorkout = () => {
         if (description === "" || date === "") {
             setError(true);
@@ -48,6 +49,7 @@ function Panel(props) {
             setWorkouts(res.data);
         });
 
+        // find today's date
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -58,7 +60,6 @@ function Panel(props) {
 
     return (
         <div className="panel">
-
             <div className="topPanel">
                 <input className="inputDate" defaultValue={date} onChange={e => {setDate(e.target.value)}}></input>
                 <textarea className="inputLog" value={description} placeholder="Type in your workout and log it!" onChange={e => {setDescription(e.target.value)}}></textarea>
@@ -69,7 +70,6 @@ function Panel(props) {
                     <label className="logLabel">Log Workout</label>
                     <FontAwesomeIcon icon="plus-square" size="2x" className="icon" onClick={e => {e.preventDefault(); addWorkout();}} />
                 </div>
-
             </div>
 
 
@@ -79,7 +79,6 @@ function Panel(props) {
                     return <Workout workoutID={x.workoutID} description={x.description} date={x.date} userID={userID} key = {x.workoutID} />
                 })}             
             </div>
-
         </div>
     );
 }

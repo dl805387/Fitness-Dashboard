@@ -10,6 +10,7 @@
     border: 1px solid #ccc;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
 }
 
 .loginInput {
@@ -70,4 +71,78 @@
 
 .loginTitle {
     margin-bottom: 30px;
+}
+
+@media (max-width: 500px) 
+{
+    
+    .loginSection {
+        width: 300px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 399px) 
+{
+    
+    .loginSection {
+        width: 300px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 349px) 
+{
+    
+    .loginSection {
+        width: 280px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 319px) 
+{
+    
+    .loginSection {
+        width: 260px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 289px) 
+{
+    
+    .loginSection {
+        width: 97%;
+        padding-left: 1%;
+        padding-right: 1%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+@media (max-width: 219px) 
+{
+    
+    .loginSection {
+        height: 400px
+    }
+
 }

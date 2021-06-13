@@ -31,17 +31,16 @@ function Login(props) {
                     <div className="loginPassword">
                         <FontAwesomeIcon icon="user" size="2x" className="loginIcon" />
                         <input className="loginInput" type="text" placeholder="pseudo email address" autoFocus required value={email} onChange={(e) => {setEmail(e.target.value)}} />
-                        <p className="error">{emailError}</p>
                     </div>
+                    <p className="error">{emailError}</p>
                 </div>
 
                 <label className="loginLabel">Password</label>
                 <div className="loginPassword">
                     <FontAwesomeIcon icon="lock" size="2x" className="loginIcon" />
-                    <input className="loginInput" type="password" placeholder="at least 6 characters" required value={password} onChange={(e) => {setPassword(e.target.value)}} />
-                    <p className="error">{passwordError}</p>
+                    <input className="loginInput" type="password" placeholder="at least 6 characters" required value={password} onChange={(e) => {setPassword(e.target.value)}} />   
                 </div>
-
+                <p className="error">{passwordError}</p>
 
                 <div>
                     {hasAccount ? (
