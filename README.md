@@ -6,7 +6,7 @@ Implemented Edamam’s Nutritional Analysis API, allowing users to search for nu
 Users can track daily nutritional intake and set goals.\
 Provide visuals for calories, protein, and fat intake using QuickChart API.\
 Built with React for the frontend, Node.js and Express.js for the backend, and MySQL for the database.\
-Implemented user login authentication with firebase
+Implemented user login authentication with firebase.
 
 ## Technologies
 * React
@@ -19,8 +19,10 @@ Implemented user login authentication with firebase
 
 ## Setup
 To run this project locally, install it by using npm\
-$ npm install.\
+$ npm install\
 \
+Make sure you are in the fitness-dashboard folder\
+We need to run the server first\
 Go to the server folder and run index.js with nodemon\
 $ cd server\
 $ nodemon index.js\
@@ -28,11 +30,12 @@ $ nodemon index.js\
 Then go back to the parent folder\
 $ cd ..\
 \
+Now we will start the frontend\
 Go to the client folder to run the react project\
 $ cd client\
 $ npm start\
 \
-Enjoy!\
+Enjoy!
 
 
 

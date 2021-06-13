@@ -35,14 +35,35 @@ function Dashboard(props) {
     useEffect(() => {
         // when user sign in, this will get the userID and other data
         if (user !== "") {
-            axios.post('http://localhost:3001/getUserInfo', {
+            axios.post('https://fitness-dashboard-dl.herokuapp.com/getUserInfo', {
                 username: user.email
             }).then((res) => {
                 setUserID(res.data[0].userID);
-                setWtGoal(res.data[0].wtGoal);
-                setCardioGoal(res.data[0].cardioGoal);
-                setCalGoal(res.data[0].calGoal);
-                setProteinGoal(res.data[0].proteinGoal);
+
+                if (res.data[0].wtGoal === null) {
+                    setWtGoal("");
+                } else {
+                    setWtGoal(res.data[0].wtGoal);
+                }
+                
+                if (res.data[0].cardioGoal === null) {
+                    setCardioGoal("");
+                } else {
+                    setCardioGoal(res.data[0].cardioGoal);
+                }
+
+                if (res.data[0].calGoal === null) {
+                    setCalGoal("");
+                } else {
+                    setCalGoal(res.data[0].calGoal);
+                }
+                
+                if (res.data[0].proteinGoal === null) {
+                    setProteinGoal("");
+                } else {
+                    setProteinGoal(res.data[0].proteinGoal);
+                }
+                
                 setTotalCal(res.data[0].calIntake);
                 setTotalCarb(res.data[0].carbIntake);
                 setTotalProtein(res.data[0].proteinIntake);

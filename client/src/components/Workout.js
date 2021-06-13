@@ -19,7 +19,7 @@ function Workout(props) {
     const [isDeleted, setIsDeleted] = useState(false);
 
     const updateWorkout = () => {
-        axios.put('http://localhost:3001/updateWorkout', {
+        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateWorkout', {
             workoutID: workoutID,
             description: editText,
             date: editDate
@@ -29,7 +29,7 @@ function Workout(props) {
     }
 
     const deleteWorkout = () => {
-        axios.post('http://localhost:3001/deleteWorkout', {
+        axios.post('https://fitness-dashboard-dl.herokuapp.com/deleteWorkout', {
             workoutID: workoutID
         }).then(() => {
             //console.log("success");
