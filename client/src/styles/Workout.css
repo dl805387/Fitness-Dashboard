@@ -13,3 +13,8 @@
 .trash {
     margin-left: 10px;
 }
+
+.vert {
+    display: flex;
+    flex-direction: column;
+}

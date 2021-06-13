@@ -23,7 +23,7 @@ function Panel(props) {
             return;
         }
 
-        axios.post('https://fitness-dashboard-dl.herokuapp.com/addWorkout', {
+        axios.post('https://workout-journal-dl.herokuapp.com/addWorkout', {
             userID: userID,
             description: description,
             date: date
@@ -42,7 +42,7 @@ function Panel(props) {
 
     useEffect(() => {
         // get workouts from database
-        axios.post('https://fitness-dashboard-dl.herokuapp.com/getWorkouts', {
+        axios.post('https://workout-journal-dl.herokuapp.com/getWorkouts', {
             userID: userID
         }).then((res) => {
             setWorkouts(res.data);
@@ -67,7 +67,7 @@ function Panel(props) {
 
                 <div className="labelPlusBtn">
                     <label className="logLabel">Log Workout</label>
-                    <FontAwesomeIcon icon="plus-square" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); addWorkout();}} />
+                    <FontAwesomeIcon icon="plus-square" size="2x" className="icon" onClick={e => {e.preventDefault(); addWorkout();}} />
                 </div>
 
             </div>

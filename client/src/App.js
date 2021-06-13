@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import fire from './fire';
-import Login from './components/Login'
-import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import Panel from './components/Panel';
 const axios = require('axios').default;
 
 function App() {
@@ -13,6 +13,8 @@ function App() {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [hasAccount, setHasAccount] = useState(false);
+
+    const [userID, setUserID] = useState(0);
 
     const clearInputs = () => {
         setEmail("");
@@ -26,10 +28,12 @@ function App() {
 
     const handleLogin = () => {
         clearErrors();
+        let isError = false;
         fire
             .auth()
             .signInWithEmailAndPassword(email, password)
             .catch(err => {
+                isError = true;
                 switch (err.code) {
                     case "auth/invalid-email":
                     case "auth/user-disabled":
@@ -39,6 +43,10 @@ function App() {
                     case "auth/wrong-password":
                         setPasswordError(err.message);
                         break;
+                }
+            }).then(() => {
+                if (!isError) {
+                    getUserID(email);
                 }
             });
     }
@@ -64,10 +72,12 @@ function App() {
                 //Only add new user to database if there are no errors with firebase.
                 if (!isError) {
                     // When user successfully sign up, they will be added to database
-                    axios.post('https://fitness-dashboard-dl.herokuapp.com/addUser', {
+                    axios.post('https://workout-journal-dl.herokuapp.com/addUser', {
                         username: email
                     }).then(() => {
-                        //console.log("success");
+                        // get the userID
+                        getUserID(email);
+                        console.log("success");
                     });
                 } 
             });
@@ -92,13 +102,51 @@ function App() {
         authListener();
     }, []);
 
+    // get user id based on email
+    // this is used if "user" has not been set yet
+    const getUserID = (email) => {
+        if (email && email !== "") {
+            axios.post('https://workout-journal-dl.herokuapp.com/getUserInfo', {
+                username: email
+            }).then((res) => {
+                if (res.data[0]) {
+                    setUserID(res.data[0].userID);
+                    console.log("success");
+                }
+            });
+        }
+    }
+
+    useEffect(() => {
+        // if the user id hasnt changed then it will try again
+        if (userID === 0 && user !== "") {   
+            axios.post('https://workout-journal-dl.herokuapp.com/getUserInfo', {
+                username: user.email
+            }).then((res) => {
+                if (res.data[0]) {
+                    setUserID(res.data[0].userID);
+                    console.log("success");
+                }
+            });
+        }
+    }, [user]);
+
     return (
         <div>
             {user ? (
-                <Dashboard 
-                    handleLogout = {handleLogout} 
-                    user = {user}
-                />
+                <div>
+                    <div className="profile"> 
+                        <p>Welcome, {user.email} </p>
+                        <button className="roundedBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
+                    </div>
+
+                    <button onClick={e=>{e.preventDefault(); console.log(userID)}}>see id</button>
+
+                    <div>
+                        {userID !== 0 && (<Panel userID = {userID} />)}
+                    </div>      
+
+                </div>
             ) : (
                 <Login 
                     email = {email}

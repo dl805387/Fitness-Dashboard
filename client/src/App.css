@@ -1,13 +1,11 @@
-.horz {
-    display: flex;
+body {
+    background-color: rgb(255, 255, 255);
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(243, 147, 144));
+    min-height: 100vh;
 }
 
-.white {
-    color: white;
-}
-
-.whiteIcon {
-    color: white;
+.icon {
+    color: black;
     cursor: pointer;
 }
 
@@ -42,9 +40,6 @@
     outline: none;
 }
 
-@media (min-width: 700px) 
-{
-    .horzDisplay {
-        display: flex;
-    }
+.profile {
+    float: right;
 }

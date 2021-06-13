@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Fontawesomeicon.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/Workout.css';
@@ -19,20 +19,20 @@ function Workout(props) {
     const [isDeleted, setIsDeleted] = useState(false);
 
     const updateWorkout = () => {
-        axios.put('https://fitness-dashboard-dl.herokuapp.com/updateWorkout', {
+        axios.put('https://workout-journal-dl.herokuapp.com/updateWorkout', {
             workoutID: workoutID,
             description: editText,
             date: editDate
         }).then(() => {
-            //console.log("success");
+            console.log("success");
         });
     }
 
     const deleteWorkout = () => {
-        axios.post('https://fitness-dashboard-dl.herokuapp.com/deleteWorkout', {
+        axios.post('https://workout-journal-dl.herokuapp.com/deleteWorkout', {
             workoutID: workoutID
         }).then(() => {
-            //console.log("success");
+            console.log("success");
         });
     }
 
@@ -55,7 +55,7 @@ function Workout(props) {
                             <textarea className="inputLog" defaultValue={description} onChange={e => {setEditText(e.target.value)}} ></textarea>
                             <div className="editWDelete">
                                 <button className="whiteBtn" onClick={e => {e.preventDefault(); updateWorkout(); setEdit(false);}}>save</button>
-                                <FontAwesomeIcon icon="trash-alt" size="2x" className="whiteIcon trash" onClick={e => {e.preventDefault(); deleteWorkout(); setIsDeleted(true);}} />
+                                <FontAwesomeIcon icon="trash-alt" size="2x" className="icon trash" onClick={e => {e.preventDefault(); deleteWorkout(); setIsDeleted(true);}} />
                             </div>
                         </div>
                     ) : (
@@ -63,8 +63,8 @@ function Workout(props) {
                             <input className="inputDate" defaultValue={date} readOnly></input> 
                             <textarea className="inputLog" defaultValue={description} readOnly></textarea> 
                             <div className="editWDelete">
-                                <FontAwesomeIcon icon="edit" size="2x" className="whiteIcon" onClick={e => {e.preventDefault(); toggleEdit();}} />
-                                <FontAwesomeIcon icon="trash-alt" size="2x" className="whiteIcon trash" onClick={e => {e.preventDefault(); deleteWorkout(); setIsDeleted(true);}} />
+                                <FontAwesomeIcon icon="edit" size="2x" className="icon" onClick={e => {e.preventDefault(); toggleEdit();}} />
+                                <FontAwesomeIcon icon="trash-alt" size="2x" className="icon trash" onClick={e => {e.preventDefault(); deleteWorkout(); setIsDeleted(true);}} />
                             </div>
                         </div>
                     )}
