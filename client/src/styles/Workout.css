@@ -14,3 +14,7 @@
 .trash {
     margin-left: 10px;
 }
+
+.trash:hover {
+    color: rgb(247, 138, 104);
+}

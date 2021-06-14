@@ -15,6 +15,8 @@ function App() {
     const [hasAccount, setHasAccount] = useState(false);
 
     const [userID, setUserID] = useState(0);
+    // this is used to take the user to a loading page while server is "asleep"
+    const [sleep, setSleep] = useState(true);
 
     const clearInputs = () => {
         setEmail("");
@@ -131,12 +133,42 @@ function App() {
         }
     }, [user]);
 
+    // takes the username and removes everything after the @ symbol
+    const greeting = (str) => {
+        return "Welcome, " + str.split("@")[0];
+    }
+
+    useEffect(() => {
+        // call to server to wake up heroku hosting
+        axios.get('https://workout-journal-dl.herokuapp.com/').then(() => {
+            setSleep(false);
+        });
+    }, []);
+
     return (
         <div>
+            {sleep && (
+                <div className="sleepCover">
+                    <div className="sleepScreen">
+                        <div className="col-3">
+                            <div className="snippet" data-title=".dot-spin">
+                                <div className="stage">
+                                    <div className="dot-spin"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Connecting to server</p>
+                        <p>Please wait a few seconds</p>
+                        <p>Backend hosted on Heroku</p>
+                    </div>
+                </div>
+            )}
+
+
             {user ? (
                 <div>
                     <div className="profile"> 
-                        <p>Welcome, {user.email} </p>
+                        <p>{greeting(user.email)}</p>
                         <button className="roundedBtn" onClick={()=> {handleLogout(); setUserID(0)}}>Logout</button>
                     </div>
 

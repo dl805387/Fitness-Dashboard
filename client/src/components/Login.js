@@ -20,6 +20,7 @@ function Login(props) {
         clearInputs
     } = props;
 
+    
     return (
         <div>
             <div className="loginSection">

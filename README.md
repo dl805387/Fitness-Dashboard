@@ -1,12 +1,14 @@
-# Fitness Dashboard
+# Workout Journal
+https://workoutjournal.netlify.app
+
 
 ## About
 Full stack CRUD web app that allows users to log their workouts to keep track of exercise progression.\
-Implemented Edamam’s Nutritional Analysis API, allowing users to search for nutrition data.\
-Users can track daily nutritional intake and set goals.\
-Provide visuals for calories, protein, and fat intake using QuickChart API.\
-Built with React for the frontend, Node.js and Express.js for the backend, and MySQL for the database.\
-Implemented user login authentication with firebase.
+Keeps a log of past workouts, with each workout containing the date that it was created.\
+Users can update and delete each workout.\
+Implemented user login authentication with firebase.\
+Built with React for the frontend, Node.js and Express.js for the backend, and MySQL for the database.
+
 
 ## Technologies
 * React
@@ -15,23 +17,20 @@ Implemented user login authentication with firebase.
 * MySQL
 * Firebase
 * Axios
-* Cors
+
 
 ## Setup
-To run this project locally, install it by using npm\
+To run this project locally, clone the project and install it by using npm install on the terminal\
 $ npm install\
 \
-Make sure you are in the fitness-dashboard folder\
-We need to run the server first\
-Go to the server folder and run index.js with nodemon\
+The parent folder is myKdrama\
+Contains two sub-folders: client and server\
+Go to the server folder to run server\
 $ cd server\
-$ nodemon index.js\
+$ npm start\
 \
-Then go back to the parent folder\
-$ cd ..\
-\
-Now we will start the frontend\
-Go to the client folder to run the react project\
+Go to the client folder to run the website on the browser\
+Make sure you are in the parent folder when you go to the client folder\
 $ cd client\
 $ npm start\
 \

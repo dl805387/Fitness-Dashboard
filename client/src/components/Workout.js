@@ -47,6 +47,7 @@ function Workout(props) {
         }
     }
 
+    
     return (
         <div>
             {!isDeleted && 

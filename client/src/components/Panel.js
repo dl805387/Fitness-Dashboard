@@ -58,6 +58,7 @@ function Panel(props) {
         setDate(today);
     }, []);
 
+    
     return (
         <div className="panel">
             <div className="topPanel">
@@ -68,7 +69,7 @@ function Panel(props) {
 
                 <div className="labelPlusBtn">
                     <label className="logLabel">Log Workout</label>
-                    <FontAwesomeIcon icon="plus-square" size="2x" className="icon" onClick={e => {e.preventDefault(); addWorkout();}} />
+                    <FontAwesomeIcon icon="plus-square" size="2x" className="icon plus" onClick={e => {e.preventDefault(); addWorkout();}} />
                 </div>
             </div>
 
