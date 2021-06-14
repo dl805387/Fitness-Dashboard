@@ -23,7 +23,7 @@ Built with React for the frontend, Node.js and Express.js for the backend, and M
 To run this project locally, clone the project and install it by using npm install on the terminal\
 $ npm install\
 \
-The parent folder is myKdrama\
+The parent folder is workout-journal\
 Contains two sub-folders: client and server\
 Go to the server folder to run server\
 $ cd server\
@@ -35,8 +35,3 @@ $ cd client\
 $ npm start\
 \
 Enjoy!
-
-
-
-
-
